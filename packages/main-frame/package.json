@@ -1,0 +1,22 @@
+{
+  "name": "main-frame",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --mode dev",
+    "build": "vite build",
+    "preview": "vite preview",
+    "replaceEnv": "node ../web-service/utils/replaceEnv.js --originalBundlePath packages/main-frame/output --targetBundlePath packages/main-frame/dist --envPath packages/main-frame",
+    "copyDistFolder": "node ../web-service/utils/copy.js --originalBundlePath packages/main-frame/dist --targetBundlePath packages/web-service/dist",
+    "removeNodeModules": "shx rm -rf node_modules"
+  },
+  "dependencies": {
+    "qiankun": "^2.10.16",
+    "vue": "^3.3.11"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.5.2",
+    "vite": "^5.0.8"
+  }
+}

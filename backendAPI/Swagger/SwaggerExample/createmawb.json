@@ -1,0 +1,22 @@
+{
+  "awbPrefix": "160",
+  "awbSuffix": "22222222",
+  "houses": [
+    {
+      "waybillNumber": "AAA",
+      "goodsDesc": "DESC A",
+      "pieces": [
+        "AAA1",
+        "AAA2"
+      ]
+    },
+    {
+      "waybillNumber": "BBB",
+      "goodsDesc": "DESC B",
+      "pieces": [
+        "BBB1",
+        "BBB2"
+      ]
+    }
+  ]
+}

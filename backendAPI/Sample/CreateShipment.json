@@ -1,0 +1,14 @@
+{
+  "@id": "",
+  "@type": [
+    "LogisticsObject",
+    "Shipment{0}"
+  ],
+  "goodsDescription": "",
+  "pieces": [
+    ""
+  ],
+  "@context": {
+    "@vocab": "https://onerecord.iata.org/ns/cargo#"
+  }
+}

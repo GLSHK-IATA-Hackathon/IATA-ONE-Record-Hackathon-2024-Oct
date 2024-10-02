@@ -1,0 +1,146 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup Label="Globals">
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>5f7808d1-ecc4-4094-8a6e-3eb8253868ee</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileContext>.</DockerfileContext>
+    <Version>6.0.1</Version>
+    <Company>GLSHK</Company>
+    <Description>Interface for decoupling
+Fluentvalidation</Description>
+    <FileVersion>2023.04.20</FileVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Certificate\**" />
+    <Compile Remove="Filter\**" />
+    <Compile Remove="Middlewares\**" />
+    <Compile Remove="Models\Common\**" />
+    <Compile Remove="Models\DB\**" />
+    <Compile Remove="Models\Enum\**" />
+    <Compile Remove="Repositories\**" />
+    <Compile Remove="Resource\**" />
+    <Compile Remove="Response\**" />
+    <Compile Remove="RestClients\**" />
+    <Compile Remove="Services\**" />
+    <Compile Remove="View\**" />
+    <Compile Remove="Web References\**" />
+    <Content Remove="Certificate\**" />
+    <Content Remove="Filter\**" />
+    <Content Remove="Middlewares\**" />
+    <Content Remove="Models\Common\**" />
+    <Content Remove="Models\DB\**" />
+    <Content Remove="Models\Enum\**" />
+    <Content Remove="Repositories\**" />
+    <Content Remove="Resource\**" />
+    <Content Remove="Response\**" />
+    <Content Remove="RestClients\**" />
+    <Content Remove="Services\**" />
+    <Content Remove="View\**" />
+    <Content Remove="Web References\**" />
+    <EmbeddedResource Remove="Certificate\**" />
+    <EmbeddedResource Remove="Filter\**" />
+    <EmbeddedResource Remove="Middlewares\**" />
+    <EmbeddedResource Remove="Models\Common\**" />
+    <EmbeddedResource Remove="Models\DB\**" />
+    <EmbeddedResource Remove="Models\Enum\**" />
+    <EmbeddedResource Remove="Repositories\**" />
+    <EmbeddedResource Remove="Resource\**" />
+    <EmbeddedResource Remove="Response\**" />
+    <EmbeddedResource Remove="RestClients\**" />
+    <EmbeddedResource Remove="Services\**" />
+    <EmbeddedResource Remove="View\**" />
+    <EmbeddedResource Remove="Web References\**" />
+    <None Remove="Certificate\**" />
+    <None Remove="Filter\**" />
+    <None Remove="Middlewares\**" />
+    <None Remove="Models\Common\**" />
+    <None Remove="Models\DB\**" />
+    <None Remove="Models\Enum\**" />
+    <None Remove="Repositories\**" />
+    <None Remove="Resource\**" />
+    <None Remove="Response\**" />
+    <None Remove="RestClients\**" />
+    <None Remove="Services\**" />
+    <None Remove="View\**" />
+    <None Remove="Web References\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="CSV\Sample.csv" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="CSV\Sample.csv" />
+  </ItemGroup>
+  
+<ItemGroup>
+    <ContentWithTargetPath Include="WebAPITemplate.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <TargetPath>%(Filename)%(Extension)</TargetPath>
+    </ContentWithTargetPath>
+</ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="GLSHK.APIClient" Version="6.0.23110" />
+    <PackageReference Include="json-ld.net" Version="1.0.7" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Log4Net.AspNetCore" Version="6.1.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.15.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+	<Content Update="CSV\Sample.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="appsettings.d1.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="appsettings.p0-green.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="appsettings.Development.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="log4net.d0.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="log4net.p0-blue.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="log4net.p0-green.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="log4net.t0.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="log4net.t1.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="log4net.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="log4net.Development.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="config\" />
+  </ItemGroup>
+
+</Project>

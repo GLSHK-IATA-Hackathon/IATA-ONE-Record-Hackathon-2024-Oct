@@ -36,16 +36,6 @@ namespace WebAPITemplate.Controllers
             _NEOneAPIService = __NEOneAPIService;
         }
 
-        [Route("test")]
-        [TokenAuthorize]
-        [HttpPost]
-        public string test()
-        {
-         Dictionary<string, List<JMInsertLEDetail>> stationEventList = new Dictionary<string, List<JMInsertLEDetail>>();
-            stationEventList.Add("LAX", new List<JMInsertLEDetail> { new JMInsertLEDetail(EventTimeType.ESTIMATED, "WDO"), new JMInsertLEDetail(EventTimeType.ACTUAL, "WDO") });
-            stationEventList.Add("NRT", new List<JMInsertLEDetail> { new JMInsertLEDetail(EventTimeType.ESTIMATED, "FOW"), new JMInsertLEDetail(EventTimeType.PLANNED, "WDUWSO") });
-            return JsonSerializer.Serialize(stationEventList);
-        }
 
         [Route("createWaybill")]
         [TokenAuthorize]

@@ -3,9 +3,9 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "build": "nx run-many -t build removeNodeModules -p login main-frame counter header footer todolist",
-    "build:local": "nx run-many -t build -p login main-frame counter header footer todolist",
-    "dev": "nx run-many -t dev -p login main-frame counter header footer todolist --output-style=stream --parallel=6",
+    "build": "nx run-many -t build removeNodeModules -p login main-frame header_h footer adminSetting departureInfo fltDashboard fltShipment stdHandlingProc",
+    "build:local": "nx run-many -t build -p login main-frame header_h footer adminSetting departureInfo fltDashboard fltShipment stdHandlingProc",
+    "dev": "nx run-many -t dev -p login main-frame header_h footer adminSetting departureInfo fltDashboard fltShipment stdHandlingProc --output-style=stream --parallel=9",
     "start": "nx start web-service"
   },
   "private": true,

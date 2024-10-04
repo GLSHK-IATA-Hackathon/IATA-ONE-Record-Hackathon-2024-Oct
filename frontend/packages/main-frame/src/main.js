@@ -14,6 +14,7 @@ let headerApp = null;
 let footerApp = null;
 
 registerMicroApps([
+  /*
   {
     name: "counter",
     entry: import.meta.env.VITE_COUNTER_URL,
@@ -22,6 +23,7 @@ registerMicroApps([
       return location.pathname.includes("/counter");
     },
   },
+  */
   {
     name: "login",
     entry: import.meta.env.VITE_LOGIN_URL,
@@ -30,6 +32,7 @@ registerMicroApps([
       return location.pathname.includes("/login");
     },
   },
+  /*
   {
     name: "todolist",
     entry: import.meta.env.VITE_TODOLIST_URL,
@@ -38,6 +41,7 @@ registerMicroApps([
       return location.pathname.includes("/todolist");
     },
   },
+  */
   {
     name: "headerAndFooter",
     entry: "",
@@ -48,6 +52,46 @@ registerMicroApps([
       checkHeaderAndFooterNeedToDisplay();
 
       return false;
+    },
+  },
+  {
+    name: "adminSetting",
+    entry: import.meta.env.VITE_ADMINSETTING_URL,
+    container: "#main",
+    activeRule: (location) => {
+      return location.pathname.includes("/admin");
+    },
+  },
+  {
+    name: "stdHandlingProc",
+    entry: import.meta.env.VITE_STD_HANDLING_PROC_URL,
+    container: "#main",
+    activeRule: (location) => {
+      return location.pathname.includes("/stdhandleproc");
+    },
+  },
+  {
+    name: "fltShipment",
+    entry: import.meta.env.VITE_FLT_SHIPMENT_URL,
+    container: "#main",
+    activeRule: (location) => {
+      return location.pathname.includes("/fltShipment");
+    },
+  },
+  {
+    name: "fltDashboard",
+    entry: import.meta.env.VITE_FLT_DASHBOARD_URL,
+    container: "#main",
+    activeRule: (location) => {
+      return location.pathname.includes("/fltDashboard");
+    },
+  },
+  {
+    name: "departureInfo",
+    entry: import.meta.env.VITE_DEPARTURE_INFO_URL,
+    container: "#main",
+    activeRule: (location) => {
+      return location.pathname.includes("/departureInfo");
     },
   },
 ]);
@@ -99,7 +143,7 @@ function loadHeaderAndFooter() {
     };
     headerApp = loadMicroApp(
       {
-        name: "header",
+        name: "header_h",
         entry: import.meta.env.VITE_HEADER_URL,
         container: "#header",
       },

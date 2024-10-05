@@ -77,12 +77,6 @@ Fluentvalidation</Description>
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Remove="Controllers\CreateMAWBController.cs" />
-    <Compile Remove="Controllers\DGCheckingController.cs" />
-    <Compile Remove="Controllers\GetMAWBController.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Remove="CSV\Sample.csv" />
   </ItemGroup>
 

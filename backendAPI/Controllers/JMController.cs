@@ -25,7 +25,9 @@ namespace WebAPITemplate.Controllers
         private string logisticsObjectServerPath = "";
         private bool createDEP = false;
         private bool createMAN = false;
-        private readonly bool isDebugmode;
+        private bool isDebugmode = true;
+        private bool eventIfAppendInObj = true;
+
         //private string debugGetTokenBaseUrl = "";
         //private string debugGetTokenUsername = "";
         //private string debugGetTokenPassword = "";
@@ -43,6 +45,7 @@ namespace WebAPITemplate.Controllers
 
 
             isDebugmode = _config.GetSection("AppSettings:IsDebugMode").Get<bool>();
+            eventIfAppendInObj = _config.GetSection("AppSettings:eventIfAppendInObj").Get<bool>();
             //this.debugGetTokenBaseUrl = _config.GetSection("APIConfig:NEOneAPI:debugGetTokenBaseUrl").Get<string>();
             //this.debugGetTokenUsername = _config.GetSection("APIConfig:NEOneAPI:debugGetTokenUsername").Get<string>();
             //this.debugGetTokenPassword = _config.GetSection("APIConfig:NEOneAPI:debugGetTokenPassword").Get<string>();
@@ -89,10 +92,16 @@ namespace WebAPITemplate.Controllers
             input.ghaDict = new Dictionary<string, string>();
 
             var stationList = new List<string>();
-            stationList.Add(input.arrivalLocation);
-            stationList.Add(input.departureLocation);
-            stationList.AddRange(input.shipment.stationEventList.Keys);
+            //stationList.AddRange(input.waybillList.Select(x => x.arrivalLocation));
+            //stationList.AddRange(input.waybillList.Select(x => x.departureLocation));
+            stationList.Add(input.waybill.arrivalLocation);
+            stationList.Add(input.waybill.departureLocation);
+            stationList.Add(input.flightArrivalLocation);
+            stationList.Add(input.flightDepartureLocation);
+            //stationList.AddRange(input.waybillList.Select(x => x.shipment).SelectMany(x => x.stationEventList.Keys));
+            stationList.AddRange(input.waybill.shipment.stationEventList.Keys);
             stationList = stationList.Distinct().ToList();
+
             foreach (var station in stationList)
             {
                 var stationResponse = await CreateLocation(station);
@@ -100,32 +109,90 @@ namespace WebAPITemplate.Controllers
                 var ghaResponse = await CreateGHA(station);
                 input.ghaDict.Add(station, ghaResponse.message);
             }
+
             var glsAirlineResponse = await CreateGLSAirline();
             var glsAgentResponse = await CreateGLSAgent();
             input.glsAirlineLink = glsAirlineResponse.message;
             input.glsAgentLink = glsAgentResponse.message;
 
-            var waybillChar = "";
-            switch (input.waybill.waybillType)
-            {
-                case WayBillType.MASTER:
-                    waybillChar = "m";
-                    break;
-                case WayBillType.HOUSE:
-                    waybillChar = "h";
-                    break;
-                case WayBillType.DIRECT:
-                    waybillChar = "d";
-                    break;
-            }
 
-            input.waybillID = $"gls{waybillChar}awb_{input.waybill.waybillPrefix}-{input.waybill.waybillNumber}";
-            input.bookingID = $"glsbooking_{input.waybill.waybillPrefix}-{input.waybill.waybillNumber}";
-            input.shipmentID = $"glsshipment_{input.waybill.waybillPrefix}-{input.waybill.waybillNumber}";
             var chkIndex = 0;
+            #region Create ID
+            var waybillChar = "";
+            //foreach (var waybill in input.waybillList)
+            //{
+            //    switch (waybill.waybillType)
+            //    {
+            //        case WayBillType.MASTER:
+            //            waybillChar = "m";
+            //            break;
+            //        case WayBillType.HOUSE:
+            //            waybillChar = "h";
+            //            break;
+            //        case WayBillType.DIRECT:
+            //            waybillChar = "d";
+            //            break;
+            //    }
+
+            //    waybill.waybillID = $"gls{waybillChar}awb_{waybill.waybillPrefix}-{waybill.waybillNumber}";
+            //    waybill.bookingID = $"glsbooking_{waybill.waybillPrefix}-{waybill.waybillNumber}";
+            //    waybill.shipmentID = $"glsshipment_{waybill.waybillPrefix}-{waybill.waybillNumber}";
+            //    chkIndex = 0;
+            //    while (true && chkIndex < 100)
+            //    {
+            //        HttpResponseMessage chkResponse = await _NEOneAPIService.GetLogisticsObject(waybill.waybillID, acessToken);
+            //        if (chkResponse.StatusCode == HttpStatusCode.NotFound)
+            //        {
+            //            break;
+            //        }
+            //        else
+            //        {
+            //            chkIndex++;
+            //            waybill.waybillID = $"gls{waybillChar}awb_{waybill.waybillPrefix}-{waybill.waybillNumber}_{chkIndex}";
+            //            waybill.bookingID = $"glsbooking_{waybill.waybillPrefix}-{waybill.waybillNumber}_{chkIndex}";
+            //            waybill.shipmentID = $"glsshipment_{waybill.waybillPrefix}-{waybill.waybillNumber}_{chkIndex}";
+            //        }
+            //    }
+            //}
+                switch (input.waybill.waybillType)
+                {
+                    case WayBillType.MASTER:
+                        waybillChar = "m";
+                        break;
+                    case WayBillType.HOUSE:
+                        waybillChar = "h";
+                        break;
+                    case WayBillType.DIRECT:
+                        waybillChar = "d";
+                        break;
+                }
+
+            input.waybill.waybillID = $"gls{waybillChar}awb_{input.waybill.waybillPrefix}-{input.waybill.waybillNumber}";
+            input.waybill.bookingID = $"glsbooking_{input.waybill.waybillPrefix}-{input.waybill.waybillNumber}";
+            input.waybill.shipmentID = $"glsshipment_{input.waybill.waybillPrefix}-{input.waybill.waybillNumber}";
+                chkIndex = 0;
+                while (true && chkIndex < 100)
+                {
+                    HttpResponseMessage chkResponse = await _NEOneAPIService.GetLogisticsObject(input.waybill.waybillID, acessToken);
+                    if (chkResponse.StatusCode == HttpStatusCode.NotFound)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        chkIndex++;
+                    input.waybill.waybillID = $"gls{waybillChar}awb_{input.waybill.waybillPrefix}-{input.waybill.waybillNumber}_{chkIndex}";
+                    input.waybill.bookingID = $"glsbooking_{input.waybill.waybillPrefix}-{input.waybill.waybillNumber}_{chkIndex}";
+                    input.waybill.shipmentID = $"glsshipment_{input.waybill.waybillPrefix}-{input.waybill.waybillNumber}_{chkIndex}";
+                    }
+                }
+            
+
+            input.aircraftID = $"glsaircraft_{input.flightNo}";
+            chkIndex = 0;
             while (true && chkIndex < 100)
             {
-                HttpResponseMessage chkResponse = await _NEOneAPIService.GetLogisticsObject(input.waybillID, acessToken);
+                HttpResponseMessage chkResponse = await _NEOneAPIService.GetLogisticsObject(input.aircraftID, acessToken);
                 if (chkResponse.StatusCode == HttpStatusCode.NotFound)
                 {
                     break;
@@ -133,31 +200,51 @@ namespace WebAPITemplate.Controllers
                 else
                 {
                     chkIndex++;
-                    input.waybillID = $"gls{waybillChar}awb_{input.waybill.waybillPrefix}-{input.waybill.waybillNumber}_{chkIndex}";
-                    input.bookingID = $"glsbooking_{input.waybill.waybillPrefix}-{input.waybill.waybillNumber}_{chkIndex}";
-                    input.shipmentID = $"glsshipment_{input.waybill.waybillPrefix}-{input.waybill.waybillNumber}_{chkIndex}";
+                    input.aircraftID = $"glsaircraft_{input.flightNo}_{chkIndex}";
                 }
             }
-            var chkAircraftResponse = await CreateAircraft(input.flightNo);
+            input.transportMovementID = $"glstransportmovement_{input.flightNo}";
+            chkIndex = 0;
+            while (true && chkIndex < 100)
+            {
+                HttpResponseMessage chkResponse = await _NEOneAPIService.GetLogisticsObject(input.transportMovementID, acessToken);
+                if (chkResponse.StatusCode == HttpStatusCode.NotFound)
+                {
+                    break;
+                }
+                else
+                {
+                    chkIndex++;
+                    input.transportMovementID = $"glstransportmovement_{input.flightNo}_{chkIndex}";
+                }
+            }
+
+
+            #endregion Create ID
+
+
+            var chkAircraftResponse = await CreateAircraft(input);
             input.aircraftLink = chkAircraftResponse.message;
-
-
             var chkTransportMovementResponse = await CreateTransportMovement(input);
             input.transportMovementLink = chkTransportMovementResponse.message;
+
+
+
             var chkBookingResponse = await CreateBooking(input);
-            input.bookingLink = chkBookingResponse.message;
+            input.waybill.bookingLink = chkBookingResponse.message;
             var chkShippmentResponse = await CreateShippment(input);
-            input.shipmentLink = chkShippmentResponse.message;
+            input.waybill.shipmentLink = chkShippmentResponse.message;
 
 
 
             string responseBody;
+            var retPath = $"{logisticsObjectServerPath}{input.waybill.waybillID}";
             string createStr = $@"
 {{
    ""@context"":{{
       ""cargo"":""https://onerecord.iata.org/ns/cargo#""
    }},
-   ""@id"": ""{logisticsObjectServerPath}{input.waybillID}"",
+   ""@id"": ""{retPath}"",
    ""cargo:waybillType"":{{
       ""@id"":""cargo:{JMCommon.GetWayBillTypeEnumName(input.waybill.waybillType)}""
    }},
@@ -165,21 +252,21 @@ namespace WebAPITemplate.Controllers
    ""cargo:waybillNumber"":""{input.waybill.waybillNumber}"",   
 
 
-{(string.IsNullOrEmpty(input.arrivalLocation) ? "" : $@"
+{(string.IsNullOrEmpty(input.waybill.arrivalLocation) ? "" : $@"
     ""cargo:arrivalLocation"":{{
-     ""@id"":""{input.stationDict[input.arrivalLocation]}""
+     ""@id"":""{input.stationDict[input.waybill.arrivalLocation]}""
    }},
 ")}
-{(string.IsNullOrEmpty(input.departureLocation) ? "" : $@"
+{(string.IsNullOrEmpty(input.waybill.departureLocation) ? "" : $@"
     ""cargo:departureLocation"":{{
-     ""@id"":""{input.stationDict[input.departureLocation]}""
+     ""@id"":""{input.stationDict[input.waybill.departureLocation]}""
    }},
 ")}
    ""cargo:referredBookingOption"":{{
-      ""@id"":""{input.bookingLink}""
+      ""@id"":""{input.waybill.bookingLink}""
    }},
    ""cargo:shipment"":{{
-      ""@id"":""{input.shipmentLink}""
+      ""@id"":""{input.waybill.shipmentLink}""
    }},
 ";
             if (input.ghaDict.Count > 0)
@@ -207,7 +294,8 @@ namespace WebAPITemplate.Controllers
 
             if (response.IsSuccessStatusCode)
             {
-                return new Response() { status = 1, message = $@"Successfully create for {logisticsObjectServerPath}{input.waybillID}" };
+                input.waybill.waybillLink = $"{retPath}";
+                return new Response() { status = 1, message = $@"Successfully create for {logisticsObjectServerPath}{input.waybill.waybillID}" };
             }
             else
             {
@@ -332,7 +420,7 @@ namespace WebAPITemplate.Controllers
                     ""cargo:LogisticsObject"",
                     ""cargo:Company""
                 ],
-                ""cargo:name"": ""GLS Logísticos A.G.""
+                ""cargo:name"": ""GLS Logistics A.G.""
             }}";
 
             HttpResponseMessage response = await _NEOneAPIService.PostLogisticsObject(createStr, acessToken);
@@ -352,10 +440,10 @@ namespace WebAPITemplate.Controllers
         [Route("createAircraft")]
         [TokenAuthorize]
         [HttpPost]
-        public async Task<Response> CreateAircraft(string aircraftCode)
+        public async Task<Response> CreateAircraft(JMInsertObj input)
         {
             string responseBody;
-            var retPath = $"{logisticsObjectServerPath}glsaircraft_{aircraftCode}";
+            var retPath = $"{logisticsObjectServerPath}{input.aircraftID}";
             string createStr = $@"{{
                 ""@context"": {{
                     ""cargo"": ""https://onerecord.iata.org/ns/cargo#""
@@ -366,7 +454,7 @@ namespace WebAPITemplate.Controllers
                     ""cargo:TransportMeans""
                 ],
                 ""cargo:operatedTransportMovement"": {{
-                    ""@id"": ""{logisticsObjectServerPath}glstransportmovement_{aircraftCode}""
+                    ""@id"": ""{logisticsObjectServerPath}{input.transportMovementID}""
                 }},
                 ""cargo:vehicleRegistration"": ""D-ABBB""
             }}";
@@ -391,23 +479,32 @@ namespace WebAPITemplate.Controllers
         public async Task<Response> CreateTransportMovement(JMInsertObj input)
         {
             string responseBody;
-            var retPath = $"{logisticsObjectServerPath}glstransportmovement_{input.flightNo}";
+            var retPath = $"{logisticsObjectServerPath}{input.transportMovementID}";
+
+            //var bookingLinkList = input.waybillList.Select(x => $@"{logisticsObjectServerPath}{x.bookingID}").ToList();
+            var bookingLink =  $@"{logisticsObjectServerPath}{input.waybill.bookingID}";
+
             string createStr = $@"{{
    ""@context"":{{
-      ""cargo"":""https://onerecord.iata.org/ns/cargo#""
+      ""cargo"":""https://onerecord.iata.org/ns/cargo#"",
+      ""@vocab"": ""https://onerecord.iata.org/ns/cargo#""
    }},
    ""@id"": ""{retPath}"",
-   ""@type"":""cargo:TransportMovement"",
-   ""cargo:arrivalLocation"":{{
-      ""@id"":""{input.stationDict[input.arrivalLocation]}""
+   ""@type"": [
+        ""LogisticsObject"",
+        ""TransportMovement"",
+        ""LogisticsActivity""
+    ],
+   ""arrivalLocation"":{{
+      ""@id"":""{input.stationDict[input.flightArrivalLocation]}""
    }},
-   ""cargo:departureLocation"":{{
-      ""@id"":""{input.stationDict[input.departureLocation]}""
+   ""departureLocation"":{{
+      ""@id"":""{input.stationDict[input.flightDepartureLocation]}""
    }},
-   ""cargo:executionStatus"":{{
-      ""@id"":""https://onerecord.iata.org/ns/cargo#ACTIVE""
+   ""executionStatus"":{{
+      ""@id"":""ACTIVE""
    }},
-   ""cargo:loadingActions"":[
+   ""loadingActions"":[
       {{
          ""@id"":""http://localhost:8080/logistics-objects/load113-81004864on1R4000""
       }},
@@ -415,59 +512,36 @@ namespace WebAPITemplate.Controllers
          ""@id"":""http://localhost:8080/logistics-objects/unload113-81004864on1R4000""
       }}
    ],
-   ""cargo:modeCode"":{{
+   ""modeCode"":{{
       ""@id"":""https://onerecord.iata.org/ns/coreCodeLists#ModeCode_AIR_TRANSPORT""
    }},
-   ""cargo:modeQualifier"":{{
-      ""@id"":""https://onerecord.iata.org/ns/cargo#MAIN_CARRIAGE""
-   }},
-   ""cargo:movementTime"":[
+   ""modeQualifier"":""MAIN_CARRIAGE"",
+   ""movementTimes"":[
       {{
-         ""@type"":""cargo:MovementTime"",
-         ""cargo:direction"":{{
-            ""@id"":""https://onerecord.iata.org/ns/cargo#OUTBOUND""
-         }},
-         ""cargo:movementMilestone"":{{
-            ""@id"":""https://onerecord.iata.org/ns/coreCodeLists#MovementIndicator_EB""
-         }},
-         ""cargo:movementTimeType"":{{
-            ""@id"":""https://onerecord.iata.org/ns/cargo#ESTIMATED""
-         }},
-         ""cargo:movementTimestamp"":{{
-            ""@type"":""http://www.w3.org/2001/XMLSchema#dateTime"",
-            ""@value"":""{input.outBoundDate.JMDTToStr(2)}""
-         }}
+         ""@type"":""movementTime"",
+         ""direction"":""OUTBOUND"",
+         ""movementMilestone"":""EB"",
+         ""movementTimeType"":""ESTIMATED"",
+         ""movementTimestamp"":""{input.outBoundDate.JMDTToStr(2)}""
       }},
       {{
-         ""@type"":""cargo:MovementTime"",
-         ""cargo:direction"":{{
-            ""@id"":""https://onerecord.iata.org/ns/cargo#INBOUND""
-         }},
-         ""cargo:movementMilestone"":{{
-            ""@id"":""https://onerecord.iata.org/ns/coreCodeLists#MovementIndicator_EB""
-         }},
-         ""cargo:movementTimeType"":{{
-            ""@id"":""https://onerecord.iata.org/ns/cargo#ESTIMATED""
-         }},
-         ""cargo:movementTimestamp"":{{
-            ""@type"":""http://www.w3.org/2001/XMLSchema#dateTime"",
-            ""@value"":""{input.inBoundDate.JMDTToStr(2)}""
-         }}
+         ""@type"":""movementTime"",
+         ""direction"":""INBOUND"",
+         ""movementMilestone"":""EB"",
+         ""movementTimeType"":""ESTIMATED"",
+         ""movementTimestamp"":""{input.inBoundDate.JMDTToStr(2)}""
       }}
    ],
-   ""cargo:operatingTransportMeans"":{{
-      ""@id"":""{logisticsObjectServerPath}glsaircraft_{input.flightNo}""
+   ""operatingTransportMeans"":{{
+      ""@id"":""{logisticsObjectServerPath}{input.aircraftID}""
    }},
-   ""cargo:servedServices"":[
-      {{
-         ""@id"":""{logisticsObjectServerPath}glsbooking_{input.waybill.waybillPrefix}-{input.waybill.waybillNumber}""
-      }},
-      {{
-         ""@id"":""http://localhost:8080/logistics-objects/Booking_113-11003087""
-      }}
+   ""servedServices"":[
+      {{bookingLink}}
    ],
-   ""cargo:transportIdentifier"":""{input.flightNo}""
+   ""transportIdentifier"":""{input.flightNo}""
 }}";
+            //{ { { (string.Join("},{", bookingLinkList))} } }
+
 
 
             HttpResponseMessage response = await _NEOneAPIService.PostLogisticsObject(createStr, acessToken);
@@ -490,7 +564,7 @@ namespace WebAPITemplate.Controllers
         public async Task<Response> CreateBooking(JMInsertObj input)
         {
             string responseBody;
-            var retPath = $"{logisticsObjectServerPath}{input.bookingID}";
+            var retPath = $"{logisticsObjectServerPath}{input.waybill.bookingID}";
             string createStr = $@"{{
    ""@context"":{{
       ""cargo"":""https://onerecord.iata.org/ns/cargo#""
@@ -504,12 +578,12 @@ namespace WebAPITemplate.Controllers
       {{
          ""@type"":""cargo:ActivitySequence"",
          ""cargo:activity"":{{
-            ""@id"":""{logisticsObjectServerPath}glstransportmovement_{input.flightNo}""
+            ""@id"":""{logisticsObjectServerPath}{input.transportMovementID}""
          }}
       }}
    ],
    ""cargo:issuedForWaybill"":{{
-      ""@id"":""{logisticsObjectServerPath}{input.waybillID}""
+      ""@id"":""{logisticsObjectServerPath}{input.waybill.waybillID}""
    }}
 }}";
 
@@ -529,22 +603,215 @@ namespace WebAPITemplate.Controllers
 
         }
 
+        [Route("createEvents")]
+        [TokenAuthorize]
+        [HttpPost]
+        public async Task<bool> CreateEvents(JMInsertObj input)
+        {
+            var retVar = false;
+            int eventNum = 1;
+            if (input.waybill.shipment.stationEventList.Count > 0)
+            {
+                foreach (var station in input.waybill.shipment.stationEventList)
+                {
+                    foreach (var eventDetail in station.Value)
+                    {
+                        if (eventDetail != null)
+                        {
+                            eventDetail.eventID = $"{input.waybill.shipmentID}_Event{eventNum}";
+
+                            var retPath = $"{logisticsObjectServerPath}{input.waybill.shipmentID}/logistics-events/{eventDetail.eventID}";
+                            //""@id"": ""{retPath}"",
+                            string createStr = $@"
+                                {{
+                                    ""@context"": {{
+                                        ""cargo"": ""https://onerecord.iata.org/ns/cargo#""
+                                    }},
+                                    ""@type"": ""cargo:LogisticsEvent"",
+                                    ""cargo:creationDate"": {{
+                                        ""@type"": ""http://www.w3.org/2001/XMLSchema#dateTime"",
+                                        ""@value"": ""{DateTime.Now.JMDTToStr(2)}""
+                                    }},
+                                    ""cargo:eventDate"": {{
+                                        ""@type"": ""http://www.w3.org/2001/XMLSchema#dateTime"",
+                                        ""@value"": ""{eventDetail.eventDate.JMDTToStr(2)}""
+                                    }},
+                                    ""cargo:eventCode"": {{
+                                        ""@type"": ""cargo:CodeListElement"",
+                                        ""cargo:code"": ""{eventDetail.mileStoneCode}"",
+                                        ""cargo:codeListName"": ""{eventDetail.mileStoneDesc}""
+                                    }},
+                                    ""cargo:eventName"": ""{eventDetail.eventName}"",
+                                    ""cargo:eventTimeType"": {{
+                                        ""@id"": ""cargo:{JMCommon.GetEventTimeTypeEnumName(eventDetail.eventTimeType)}"",
+                                        ""@type"": ""cargo:EventTimeType""
+                                    }},
+                                    ""cargo:eventLocation"": {{""@id"":""{input.stationDict[station.Key]}""}}
+                                }}
+                            ";
+                            /*
+                             
+
+                            {{
+                                        ""@type"": ""cargo:CodeListElement"",
+                                        ""cargo:code"": ""{JMCommon.GetEventTimeTypeEnumName(eventDetail.eventTimeType)}"",
+                                        ""cargo:codeListName"": ""{JMCommon.GetEventTimeTypeEnumName(eventDetail.eventTimeType)}""
+                                    }}
+                            */
+
+                            HttpResponseMessage response = await _NEOneAPIService.PostLogisticsObjectEvent(input.waybill.shipmentID, createStr, acessToken);
+
+                            if (response.IsSuccessStatusCode)
+                            {
+                                eventDetail.eventLink = retPath;
+                                retVar = true;
+                            }
+
+                            eventNum++;
+                        }
+                    }
+                }
+            }
+            return retVar;
+        }
+        [Route("getEventsCreationStr")]
+        [TokenAuthorize]
+        [HttpPost]
+        public async Task<string> GetEventsCreationStr(JMInsertObj input)
+        {
+            var retVal = "";
+            int eventNum = 1;
+            var insertStrList = new List<string>();
+            if (input.waybill.shipment.stationEventList.Count > 0)
+            {
+                foreach (var station in input.waybill.shipment.stationEventList)
+                {
+                    foreach (var eventDetail in station.Value)
+                    {
+                        if (eventDetail != null)
+                        {
+                            var retPath = $"{logisticsObjectServerPath}{input.waybill.shipmentID}/logistics-events/{eventDetail.eventID}";
+                            //""@id"": ""{retPath}"",
+                            insertStrList.Add($@"
+                                {{
+                                    ""@type"": ""cargo:LogisticsEvent"",
+                                    ""cargo:creationDate"": {{
+                                        ""@type"": ""http://www.w3.org/2001/XMLSchema#dateTime"",
+                                        ""@value"": ""{DateTime.Now.JMDTToStr(2)}""
+                                    }},
+                                    ""cargo:eventDate"": {{
+                                        ""@type"": ""http://www.w3.org/2001/XMLSchema#dateTime"",
+                                        ""@value"": ""{eventDetail.eventDate.JMDTToStr(2)}""
+                                    }},
+                                    ""cargo:eventCode"": {{
+                                        ""@type"": ""cargo:CodeListElement"",
+                                        ""cargo:code"": ""{eventDetail.mileStoneCode}"",
+                                        ""cargo:codeListName"": ""{eventDetail.mileStoneDesc}""
+                                    }},
+                                    ""cargo:eventName"": ""{eventDetail.eventName}"",
+                                    ""eventTimeType"": ""{JMCommon.GetEventTimeTypeEnumName(eventDetail.eventTimeType)}"",
+                                    ""cargo:eventLocation"": {{""@id"":""{input.stationDict[station.Key]}""}}
+                                }}
+                            ");
+                            /*
+                             
+
+                            {{
+                                        ""@type"": ""cargo:CodeListElement"",
+                                        ""cargo:code"": ""{JMCommon.GetEventTimeTypeEnumName(eventDetail.eventTimeType)}"",
+                                        ""cargo:codeListName"": ""{JMCommon.GetEventTimeTypeEnumName(eventDetail.eventTimeType)}""
+                                    }}
+                            */
+
+                        }
+                    }
+                }
+            }
+            retVal = string.Join(',', insertStrList);
+            return retVal;
+        }
+
+        [Route("appendEvent")]
+        [TokenAuthorize]
+        [HttpPost]
+        public async Task<Response> AppendEvent(JMInsertObj input)
+        {
+            string responseBody;
+            var retPath = $"{logisticsObjectServerPath}{input.waybill.shipmentID}";
+            var insertStrList = new List<string>();
+            var eventLinkList = input.waybill.shipment.stationEventList.SelectMany(x => x.Value).Select(x => x.eventLink).ToList();
+
+            foreach (var eventLink in eventLinkList)
+            {
+                insertStrList.Add($@"
+                    {{
+                        ""@type"": ""api:OperationObject"",
+                        ""api:hasDatatype"": ""https://onerecord.iata.org/ns/cargo#LogisticsEvent"",
+                        ""api:hasValue"": ""{eventLink}""
+                    }}
+                ");
+            }
+
+            string createStr = $@"{{
+    ""@context"": {{
+        ""cargo"": ""https://onerecord.iata.org/ns/cargo#"",
+        ""api"": ""https://onerecord.iata.org/ns/api#""
+    }},
+    ""@type"": ""api:Change"",
+    ""api:hasLogisticsObject"": {{
+        ""@id"": ""{retPath}""
+    }},
+    ""api:hasDescription"": ""append event"",
+    ""api:hasOperation"": [{{
+            ""@type"": ""api:Operation"",
+            ""api:op"": {{
+                ""@id"": ""api:ADD""
+            }},
+            ""api:s"": ""{retPath}"",
+            ""api:p"": ""https://onerecord.iata.org/ns/cargo#events"",
+            ""api:o"": [
+                {string.Join(',', insertStrList)}
+            ]
+        }}
+    ],
+    ""api:hasRevision"": {{
+        ""@type"": ""http://www.w3.org/2001/XMLSchema#positiveInteger"",
+        ""@value"": ""1""
+    }}
+}}";
+
+            HttpResponseMessage response = await _NEOneAPIService.PostLogisticsObject(createStr, acessToken);
+
+            if (response.IsSuccessStatusCode)
+            {
+
+                return new Response() { status = 1, message = retPath };
+            }
+            else
+            {
+                responseBody = await response.Content.ReadAsStringAsync();
+                return new Response() { status = 0, message = retPath };
+            }
+
+        }
         [Route("createShippment")]
         [TokenAuthorize]
         [HttpPost]
         public async Task<Response> CreateShippment(JMInsertObj input)
         {
             string responseBody;
-            var retPath = $"{logisticsObjectServerPath}{input.shipmentID}";
+            var retPath = $"{logisticsObjectServerPath}{input.waybill.shipmentID}";
             string createStr = $@"
 {{
    ""@context"":{{
-      ""cargo"":""https://onerecord.iata.org/ns/cargo#""
+      ""cargo"":""https://onerecord.iata.org/ns/cargo#"",
+      ""@vocab"": ""https://onerecord.iata.org/ns/cargo#""
    }},
     ""@id"": ""{retPath}"",
-    ""cargo:goodsDescription"": ""{(string.IsNullOrEmpty(input.shipment.goodsDescription) ? "Goods Description" : $@"{input.shipment.goodsDescription}")}"",
+    ""cargo:goodsDescription"": ""{(string.IsNullOrEmpty(input.waybill.shipment.goodsDescription) ? "Goods Description" : $@"{input.waybill.shipment.goodsDescription}")}"",
+    {(input.waybill.shipment.shcList != null && input.waybill.shipment.shcList.Count > 0 ? $@"""cargo:specialHandlingCodes"": [{string.Join(',', input.waybill.shipment.shcList.Select(x => $@"{{""@type"": ""CodeListElement"",""code"": ""{x}""}}"))}]," : "")}
     ""cargo:waybill"": {{
-        ""@id"": ""{logisticsObjectServerPath}{input.waybillID}""
+        ""@id"": ""{logisticsObjectServerPath}{input.waybill.waybillID}""
     }},
     ""cargo:pieces"": [
         {{
@@ -561,68 +828,66 @@ namespace WebAPITemplate.Controllers
         }}
     ],
 ";
-            if (input.shipment.stationEventList.Count > 0)
+
+            if (eventIfAppendInObj && input.waybill.shipment.stationEventList.Count > 0)
             {
-                createStr += $@"
-""cargo:events"":[
-";
+                createStr += $@"""cargo:events"":[";
                 var insertStrList = new List<string>();
-                foreach (var item in input.shipment.stationEventList)
+                foreach (var item in input.waybill.shipment.stationEventList)
                 {
                     var station = item.Key;
                     foreach (var eventObj in item.Value)
                     {
                         insertStrList.Add($@"
-{{
-    ""@type"": ""cargo:LogisticsEvent"",
-    ""cargo:creationDate"": {{
-        ""@type"": ""http://www.w3.org/2001/XMLSchema#dateTime"",
-        ""@value"": ""{DateTime.Now.JMDTToStr()}""
-    }},
-    ""cargo:eventDate"": {{
-        ""@type"": ""http://www.w3.org/2001/XMLSchema#dateTime"",
-        ""@value"": ""{eventObj.eventDate.JMDTToStr()}""
-    }},
-    ""cargo:eventCode"": {{
-        ""@type"": ""cargo:CodeListElement"",
-        ""cargo:code"": ""{eventObj.mileStoneCode}"",
-        ""cargo:codeListName"": ""{eventObj.mileStoneDesc}""
-    }},
-    ""cargo:eventName"": ""{eventObj.eventName}"",
-    ""cargo:eventTimeType"": {{
-        ""@id"": ""cargo:{JMCommon.GetEventTimeTypeEnumName(eventObj.eventTimeType)}"",
-        ""@type"": ""cargo:EventTimeType""
-    }},
-    ""cargo:eventLocation"": {{""@id"":""{input.stationDict[station]}""}}
-}}
-");
+				            {{
+					            ""@type"": ""cargo:LogisticsEvent"",
+					            ""cargo:creationDate"": {{
+						            ""@type"": ""http://www.w3.org/2001/XMLSchema#dateTime"",
+						            ""@value"": ""{DateTime.Now.JMDTToStr()}""
+					            }},
+					            ""cargo:eventDate"": {{
+						            ""@type"": ""http://www.w3.org/2001/XMLSchema#dateTime"",
+						            ""@value"": ""{eventObj.eventDate.JMDTToStr()}""
+					            }},
+					            ""cargo:eventCode"": {{
+						            ""@type"": ""cargo:CodeListElement"",
+						            ""cargo:code"": ""{eventObj.mileStoneCode}"",
+						            ""cargo:codeListName"": ""{eventObj.mileStoneDesc}""
+					            }},
+					            ""cargo:eventName"": ""{eventObj.eventName}"",
+					            ""eventTimeType"": ""{JMCommon.GetEventTimeTypeEnumName(eventObj.eventTimeType)}"",
+					            ""cargo:eventLocation"": {{""@id"":""{input.stationDict[station]}""}}
+				            }}
+			            ");
 
                     }
                 }
                 createStr += string.Join(",", insertStrList);
-                createStr += $@"
-],
-";
+                createStr += $@"],";
             }
+
             createStr += $@"
-        ""@type"":[
-            ""cargo:LogisticsObject"",
-            ""cargo:Shipment""
-        ]
+    ""@type"":[
+        ""cargo:LogisticsObject"",
+        ""cargo:Shipment""
+    ]
 }}
 ";
-
-
-
-
-
+            //(eventIfAppendInObj ? ($@"""@cargo:events"": [{await GetEventsCreationStr(input)}],") : "")
+            //""cargo: events"":[{ { { string.Join("},{", input.shipment.stationEventList.SelectMany(x => x.Value).Select(x => x.eventLink))} } }],
 
             HttpResponseMessage response = await _NEOneAPIService.PostLogisticsObject(createStr, acessToken);
 
             if (response.IsSuccessStatusCode)
             {
 
-                return new Response() { status = 1, message = retPath };
+                var retObj = new Response() { status = 1, message = retPath };
+                if (!eventIfAppendInObj)
+                {
+                    var ifEventCreated = await CreateEvents(input);
+                    await AppendEvent(input);
+                }
+                return retObj;
             }
             else
             {
@@ -631,6 +896,8 @@ namespace WebAPITemplate.Controllers
             }
 
         }
+
+
 
         [Route("genToken")]
         [TokenAuthorize]

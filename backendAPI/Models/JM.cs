@@ -127,32 +127,40 @@ namespace WebAPITemplate.Models
     public class JMInsertObj
     {
         public string flightNo { get; set; } = "";
-
-        public string arrivalLocation { get; set; } = "";
-        public string departureLocation { get; set; } = "";
-
+        public string flightArrivalLocation { get; set; } = "";
+        public string flightDepartureLocation { get; set; } = "";
         public DateTime outBoundDate { get; set; } = DateTime.Now;
         public DateTime inBoundDate { get; set; } = DateTime.Now;
 
+
+        //public List<JMInsertWaybillObj> waybillList { get; set; } = new List<JMInsertWaybillObj>();
         public JMInsertWaybillObj waybill { get; set; } = new JMInsertWaybillObj();
-        public JMInsertShipmentObj shipment { get; set; } = new JMInsertShipmentObj();
 
 
         public Dictionary<string, string> stationDict = new Dictionary<string, string>();
         public Dictionary<string, string> ghaDict = new Dictionary<string, string>();
         public string glsAirlineLink = "";
         public string glsAgentLink = "";
+
+        public string aircraftID = "";
+        public string transportMovementID = "";
+
         public string aircraftLink = "";
         public string transportMovementLink = "";
-        public string bookingLink = "";
-        public string shipmentLink = "";
-        public string waybillID = "";
-        public string bookingID = "";
-        public string shipmentID = "";
 
     }
     public class JMInsertWaybillObj
     {
+        public string waybillID = "";
+        public string bookingID = "";
+        public string shipmentID = "";
+        public string waybillLink = "";
+        public string bookingLink = "";
+        public string shipmentLink = "";
+        public string arrivalLocation { get; set; } = "";
+        public string departureLocation { get; set; } = "";
+
+        public JMInsertShipmentObj shipment { get; set; } = new JMInsertShipmentObj();
         public string waybillPrefix { get; set; } = "";
         public string waybillNumber { get; set; } = "";
         public WayBillType waybillType { get; set; } = WayBillType.MASTER;
@@ -160,10 +168,13 @@ namespace WebAPITemplate.Models
     public class JMInsertShipmentObj
     {
         public string goodsDescription { get; set; } = "";
+        public List<string> shcList { get; set; } = new List<string>(); 
         public Dictionary<string, List<JMInsertLEDetail>> stationEventList { get; set; } = new Dictionary<string, List<JMInsertLEDetail>>();
     }
     public class JMInsertLEDetail
     {
+        public string eventID = "";
+        public string eventLink = "";
         public EventTimeType eventTimeType { get; set; } = EventTimeType.ACTUAL;
         public DateTime eventDate { get; set; } = DateTime.Now;
         public string mileStoneCode { get; set; } = "";

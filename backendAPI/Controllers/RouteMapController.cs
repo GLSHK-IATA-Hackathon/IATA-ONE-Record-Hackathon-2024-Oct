@@ -59,9 +59,9 @@ namespace WebAPITemplate.Controllers
                     var json_u = (JObject)JsonConvert.DeserializeObject(getLogisticsEventsResult.message);
 
 
-                    var embeddedLO = JsonLdProcessor.Frame(json_u, json_u["@context"], opts);
+                    //var embeddedLO = JsonLdProcessor.Frame(json_u, json_u["@context"], opts);
 
-                    JObject compactedDocument = JsonLdProcessor.Compact(embeddedLO, json_u["@context"], opts);
+                    //JObject compactedDocument = JsonLdProcessor.Compact(embeddedLO, json_u["@context"], opts);
 
 
                     return Ok(getLogisticsEventsResult);
@@ -84,7 +84,7 @@ namespace WebAPITemplate.Controllers
 
             if (response.IsSuccessStatusCode)
             {
-                responseBody = await response.Content.ReadAsStringAsync();\
+                responseBody = await response.Content.ReadAsStringAsync();
                 return new Response() { status = 1, message = responseBody };
 
                 //In offical, should be use ofShipment to locate the linked pieces

@@ -28,7 +28,25 @@ namespace WebAPITemplate.Service
             logisticsObjectEventPath = "logistics-objects/{0}/logistics-events";
         }
 
+        public async Task<HttpResponseMessage> PatchLogisticsObject(string body = "", string bearToken = "")
+        {
 
+            HttpContent contentPost = new StringContent(body, Encoding.UTF8, "application/ld+json");
+
+            if (!string.IsNullOrEmpty(bearToken))
+            {
+                if (_httpClient.DefaultRequestHeaders.Contains("Authorization"))
+                {
+                    _httpClient.DefaultRequestHeaders.Remove("Authorization");
+                }
+
+                _httpClient.DefaultRequestHeaders.Add("Authorization", "bearer " + bearToken);
+            }
+
+
+            return await _httpClient.PatchAsync(logisticsObjectPath, contentPost);
+
+        }
 
         public async Task<HttpResponseMessage> PostLogisticsObject(string body = "", string bearToken = "")
         {

@@ -12,5 +12,6 @@ namespace WebAPITemplate.Interface
         Task<HttpResponseMessage> PostLogisticsObject(string body = "", string bearToken = "");
         Task<HttpResponseMessage> PostLogisticsObjectEvent(string mawb, string body = "", string bearToken = "");
         Task<HttpResponseMessage> GetLogisticsObject(string loId, string bearToken = "");
+        Task<HttpResponseMessage> GetLogisticsEvents(string loId, string bearToken = "");
     }
 }

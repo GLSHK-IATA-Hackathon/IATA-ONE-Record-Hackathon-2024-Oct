@@ -45,19 +45,22 @@ namespace WebAPITemplate.Models
         }
         public enum DefaultMileStoneType
         {
-            UWS = 1,
-            LIR = 2,
-            FOW = 3,
-            ALS = 4,
-            ALE = 5,
-            OFB = 6,
-            WUP = 7,
-            FFM = 8,
-            WDO = 9,
-            ONB = 10,
-            AUS = 11,
-            AUE = 12,
-            FIW = 13,
+            UWS,
+            LIR,
+            FOW,
+            ALS,
+            ALE,
+            DEP,
+            FFM,
+            ARR,
+            AUS,
+            AUE,
+            FIW,
+
+            OFB,
+            WUP,
+            WDO,
+            ONB,
         }
         public static DefaultMileStoneType? GetDefaultMileStoneTypeEnum(string input)
         {
@@ -86,6 +89,8 @@ namespace WebAPITemplate.Models
             {DefaultMileStoneType.AUS, "Aircraft Unloading Started​"},
             {DefaultMileStoneType.AUE, "Aircraft Unoading Ended"},
             {DefaultMileStoneType.FIW, "Freight in to Warehouse"},
+            {DefaultMileStoneType.DEP, "Departure"},
+            {DefaultMileStoneType.ARR, "Arrival"},
         };
         public static string GetDefaultMileStoneDesc(string type)
         {
@@ -119,20 +124,41 @@ namespace WebAPITemplate.Models
 
     }
 
+    public class JMInsertObj
+    {
+        public string flightNo { get; set; } = "";
 
+        public string arrivalLocation { get; set; } = "";
+        public string departureLocation { get; set; } = "";
+
+        public DateTime outBoundDate { get; set; } = DateTime.Now;
+        public DateTime inBoundDate { get; set; } = DateTime.Now;
+
+        public JMInsertWaybillObj waybill { get; set; } = new JMInsertWaybillObj();
+        public JMInsertShipmentObj shipment { get; set; } = new JMInsertShipmentObj();
+
+
+        public Dictionary<string, string> stationDict = new Dictionary<string, string>();
+        public Dictionary<string, string> ghaDict = new Dictionary<string, string>();
+        public string glsAirlineLink = "";
+        public string glsAgentLink = "";
+        public string aircraftLink = "";
+        public string transportMovementLink = "";
+        public string bookingLink = "";
+        public string shipmentLink = "";
+        public string waybillID = "";
+        public string bookingID = "";
+        public string shipmentID = "";
+
+    }
     public class JMInsertWaybillObj
     {
-        public string id { get; set; } = "";
         public string waybillPrefix { get; set; } = "";
         public string waybillNumber { get; set; } = "";
         public WayBillType waybillType { get; set; } = WayBillType.MASTER;
-        public string arrivalLocation { get; set; } = "";   
-        public string departureLocation { get; set; } = "";
-        public JMInsertShipmentObj shipment { get; set; } = new JMInsertShipmentObj();
     }
     public class JMInsertShipmentObj
     {
-        public string id { get; set; } = "";
         public string goodsDescription { get; set; } = "";
         public Dictionary<string, List<JMInsertLEDetail>> stationEventList { get; set; } = new Dictionary<string, List<JMInsertLEDetail>>();
     }

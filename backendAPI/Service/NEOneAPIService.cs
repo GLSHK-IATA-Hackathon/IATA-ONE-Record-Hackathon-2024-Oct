@@ -29,10 +29,28 @@ namespace WebAPITemplate.Service
         }
 
 
+        //public async Task<HttpResponseMessage> DebugModeGetToken(string debugGetTokenBaseUrl, string debugGetTokenUsername, string debugGetTokenPassword)
+        //{
+        //    if (_httpClient.DefaultRequestHeaders.Contains("Authorization"))
+        //    {
+        //        _httpClient.DefaultRequestHeaders.Remove("Authorization");
+        //    }
+
+        //    _httpClient.DefaultRequestHeaders.Add("Authorization", $"Basic {debugGetTokenPassword}");
+
+        //    var collection = new List<KeyValuePair<string, string>>();
+        //    collection.Add(new("grant_type", "client_credentials"));
+        //    collection.Add(new("client_id", "neone-client"));
+        //    var content = new FormUrlEncodedContent(collection);
+
+        //    return await _httpClient.PostAsync(debugGetTokenBaseUrl, content);
+
+        //}
+
 
         public async Task<HttpResponseMessage> PostLogisticsObject(string body = "", string bearToken = "")
         {
-          
+
             HttpContent contentPost = new StringContent(body, Encoding.UTF8, "application/ld+json");
 
             if (!string.IsNullOrEmpty(bearToken))
@@ -84,7 +102,7 @@ namespace WebAPITemplate.Service
             }
 
 
-            return await _httpClient.GetAsync(logisticsObjectPath+"/"+ loId);
+            return await _httpClient.GetAsync(logisticsObjectPath + "/" + loId);
 
         }
 

@@ -1,0 +1,160 @@
+{
+  "awbPrefix": "000",
+  "awbSuffix": "12345678",
+  "description": "A2 x 1 PMC",
+  "weight":  2000,
+  "flightNumber": "GLS002",
+  "departureDT": "2024-10-01T23:30",
+  "arrivalDT": "2024-10-02T19:30",
+  "plannedEvents": [
+    {
+      "eventCode": "UWS",
+      "eventLocation": "HKG",
+      "time": "2024-10-01T21:30"
+    },
+    {
+      "eventCode": "LIR",
+      "eventLocation": "HKG",
+      "time": "2024-10-01T22:00"
+    },
+    {
+      "eventCode": "FOW",
+      "eventLocation": "HKG",
+      "time": "2024-10-01T22:10"
+    },
+    {
+      "eventCode": "ALS",
+      "eventLocation": "HKG",
+      "time": "2024-10-01T22:30"
+    },
+    {
+      "eventCode": "ALE",
+      "eventLocation": "HKG",
+      "time": "2024-10-01T23:20"
+    },
+    {
+      "eventCode": "DEP",
+      "eventLocation": "HKG",
+      "time": "2024-10-01T23:30"
+    },
+    {
+      "eventCode": "FFM",
+      "eventLocation": "HKG",
+      "time": "2024-10-02T00:30"
+    },
+    {
+      "eventCode": "ARR",
+      "eventLocation": "IST",
+      "time": "2024-10-02T06:30"
+    },
+    {
+      "eventCode": "AUS",
+      "eventLocation": "IST",
+      "time": "2024-10-02T06:50"
+    },
+    {
+      "eventCode": "AUE",
+      "eventLocation": "IST",
+      "time": "2024-10-02T08:00"
+    },
+    {
+      "eventCode": "FIW",
+      "eventLocation": "IST",
+      "time": "2024-10-02T08:30"
+    },
+
+    {
+      "eventCode": "UWS",
+      "eventLocation": "IST",
+      "time": "2024-10-02T11:00"
+    },
+    {
+      "eventCode": "LIR",
+      "eventLocation": "IST",
+      "time": "2024-10-02T11:00"
+    },
+    {
+      "eventCode": "FOW",
+      "eventLocation": "IST",
+      "time": "2024-10-02T11:10"
+    },
+    {
+      "eventCode": "ALS",
+      "eventLocation": "IST",
+      "time": "2024-10-02T11:30"
+    },
+    {
+      "eventCode": "ALE",
+      "eventLocation": "IST",
+      "time": "2024-10-02T12:20"
+    },
+    {
+      "eventCode": "DEP",
+      "eventLocation": "IST",
+      "time": "2024-10-02T12:30"
+    },
+    {
+      "eventCode": "FFM",
+      "eventLocation": "IST",
+      "time": "2024-10-02T13:30"
+    },
+    {
+      "eventCode": "ARR",
+      "eventLocation": "LHR",
+      "time": "2024-10-02T17:00"
+    },
+    {
+      "eventCode": "AUS",
+      "eventLocation": "LHR",
+      "time": "2024-10-02T17:20"
+    },
+    {
+      "eventCode": "AUE",
+      "eventLocation": "LHR",
+      "time": "2024-10-02T18:30"
+    },
+    {
+      "eventCode": "FIW",
+      "eventLocation": "LHR",
+      "time": "2024-10-02T19:00"
+    }
+  ],
+  "actualEvents": [
+    {
+      "eventCode": "UWS",
+      "eventLocation": "HKG",
+      "time": "2024-10-01T21:30",
+      "offsetInMinutes": 0
+    },
+    {
+      "eventCode": "LIR",
+      "eventLocation": "HKG",
+      "time": "2024-10-01T22:00",
+      "offsetInMinutes": 0
+    },
+    {
+      "eventCode": "FOW",
+      "eventLocation": "HKG",
+      "time": "2024-10-01T22:10",
+      "offsetInMinutes": 0
+    },
+    {
+      "eventCode": "ALS",
+      "eventLocation": "HKG",
+      "time": "2024-10-01T22:30",
+      "offsetInMinutes": 0
+    },
+    {
+      "eventCode": "ALE",
+      "eventLocation": "HKG",
+      "time": "2024-10-01T23:20",
+      "offsetInMinutes": 0
+    },
+    {
+      "eventCode": "DEP",
+      "eventLocation": "HKG",
+      "time": "2024-10-02T04:00",
+      "offsetInMinutes": 270
+    }
+  ]
+}

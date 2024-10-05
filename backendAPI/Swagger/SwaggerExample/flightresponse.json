@@ -1,0 +1,67 @@
+{
+  "flightNumber": "GLS001",
+  "origin": "HKG",
+  "destination": "IST",
+  "departureDT": "2024-10-01T23:30",
+  "arrivalDT": "2024-10-02T06:30",
+  "transitAWBs": [
+    {
+      "awbPrefix": "000",
+      "awbSuffix": "11111111",
+      "origin": "HKG",
+      "destination": "LHR",
+      "description": "CX002/02Oct IST-LHR",
+      "piece": 1,
+      "weight": 1600,
+      "volume": 10,
+      "uld": "A2 (1)",
+      "shc": "HEA",
+      "plannedTransitMode": "Normal transit",
+      "transitTimeInMinutes": 90
+    },
+    {
+      "awbPrefix": "000",
+      "awbSuffix": "22222222",
+      "origin": "HKG",
+      "destination": "MXP",
+      "description": "CX003/02Oct IST-MXP",
+      "piece": 1,
+      "weight": 2000,
+      "volume": 12,
+      "uld": "H2 (1)",
+      "shc": "COL",
+      "plannedTransitMode": "Normal transit",
+      "transitTimeInMinutes": 240
+    }
+  ],
+  "importAWBs": [
+    {
+      "awbPrefix": "000",
+      "awbSuffix": "33333333",
+      "origin": "HKG",
+      "destination": "LHR",
+      "description": "",
+      "piece": 1,
+      "weight": 1200,
+      "volume": 10,
+      "uld": "A2 (1)",
+      "shc": "VUN",
+      "plannedTransitMode": "",
+      "transitTimeInMinutes": 0
+    },
+    {
+      "awbPrefix": "000",
+      "awbSuffix": "44444444",
+      "origin": "HKG",
+      "destination": "LHR",
+      "description": "",
+      "piece": 1,
+      "weight": 1200,
+      "volume": 10,
+      "uld": "A2 (1)",
+      "shc": "VUN",
+      "plannedTransitMode": "",
+      "transitTimeInMinutes": 0
+    }
+  ]
+}

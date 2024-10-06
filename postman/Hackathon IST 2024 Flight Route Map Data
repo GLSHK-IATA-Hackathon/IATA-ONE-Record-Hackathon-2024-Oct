@@ -1,0 +1,786 @@
+{
+	"info": {
+		"_postman_id": "014976fb-30b3-4c22-a573-f0e05b6ef775",
+		"name": "TK Hackathon Event with HardCode value, should run the js for the fix of eventTimeType",
+		"description": "var div_list = document.querySelectorAll('.block'); // returns NodeList  \nvar div_array = \\[...div_list\\]; // converts NodeList to Array  \ndiv_array.forEach(div => {  \nif(div.querySelector('span:first-child') != null)  \nif(div.querySelector('span:first-child').innerText.indexOf(\"partialEventIndicator\") >= 0)  \n{  \ndiv.querySelector('span:first-child').innerText = \"eventTimeType\";  \nif(div.querySelector('span:last-child').innerText == \"false\")  \ndiv.querySelector('span:last-child').innerText = \"ACTUAL\";  \nelse  \ndiv.querySelector('span:last-child').innerText = \"PLANNED\";  \n}  \n// do something awesome with each div\n\n});",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3493950"
+	},
+	"item": [
+		{
+			"name": "Before",
+			"item": [
+				{
+					"name": "1 Planned UWS",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{HackToken_2024_Turkey}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/ld+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"@context\":{\r\n      \"cargo\":\"https://onerecord.iata.org/ns/cargo#\"\r\n      ,\"@vocab\": \"https://onerecord.iata.org/ns/cargo#\"\r\n   },\r\n    \"@type\": [\r\n        \"LogisticsEvent\"\r\n    ],\r\n    \"cargo:creationDate\": \"2024-10-05T22:00:00.000Z\",\r\n    \"cargo:eventDate\": \"2024-10-01T21:30:00.000Z\",\r\n    \"cargo:eventCode\": {\r\n        \"@type\": \"cargo:CodeListElement\"\r\n        , \"cargo:code\": \"UWS\"\r\n        , \"cargo:codeListName\": \"Finish Palletizing\"\r\n    }, \r\n    \"cargo:eventName\": \"Finish Palletizing\", \r\n    \"cargo:eventTimeType\": {\r\n        \"@id\": \"cargo:PLANNED\",\r\n        \"@type\": \"cargo:EventTimeType\"\r\n    },\r\n    \"cargo:partialEventIndicator\": true,\r\n    \"cargo:eventLocation\": \"http://localhost:8080/logistics-objects/gls_airport_HKG\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/logistics-objects/{{LoID}}/logistics-events",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"logistics-objects",
+								"{{LoID}}",
+								"logistics-events"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2 Planned LIR",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{HackToken_2024_Turkey}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/ld+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"@context\":{\r\n      \"cargo\":\"https://onerecord.iata.org/ns/cargo#\"\r\n      ,\"@vocab\": \"https://onerecord.iata.org/ns/cargo#\"\r\n   },\r\n    \"@type\": [\r\n        \"LogisticsEvent\"\r\n    ],\r\n    \"cargo:creationDate\": \"2024-10-05T22:00:00.000Z\",\r\n    \"cargo:eventDate\": \"2024-10-01T22:00:00.000Z\",\r\n    \"cargo:eventCode\": {\r\n        \"@type\": \"cargo:CodeListElement\"\r\n        , \"cargo:code\": \"LIR\"\r\n        , \"cargo:codeListName\": \"Load Plan Ready\"\r\n    }, \r\n    \"cargo:eventName\": \"Load Plan Ready\", \r\n    \"cargo:eventTimeType\": {\r\n        \"@id\": \"cargo:PLANNED\",\r\n        \"@type\": \"cargo:EventTimeType\"\r\n    },\r\n    \"cargo:partialEventIndicator\": true,\r\n    \"cargo:eventLocation\": \"http://localhost:8080/logistics-objects/gls_airport_HKG\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/logistics-objects/{{LoID}}/logistics-events",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"logistics-objects",
+								"{{LoID}}",
+								"logistics-events"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "3 Planned FOW",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{HackToken_2024_Turkey}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/ld+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"@context\":{\r\n      \"cargo\":\"https://onerecord.iata.org/ns/cargo#\"\r\n      ,\"@vocab\": \"https://onerecord.iata.org/ns/cargo#\"\r\n   },\r\n    \"@type\": [\r\n        \"LogisticsEvent\"\r\n    ],\r\n    \"cargo:creationDate\": \"2024-10-05T22:00:00.000Z\",\r\n    \"cargo:eventDate\": \"2024-10-01T22:10:00.000Z\",\r\n    \"cargo:eventCode\": {\r\n        \"@type\": \"cargo:CodeListElement\"\r\n        , \"cargo:code\": \"FOW\"\r\n        , \"cargo:codeListName\": \"Freight out of Warehouse\"\r\n    }, \r\n    \"cargo:eventName\": \"Freight out of Warehouse\", \r\n    \"cargo:eventTimeType\": {\r\n        \"@id\": \"cargo:PLANNED\",\r\n        \"@type\": \"cargo:EventTimeType\"\r\n    },\r\n    \"cargo:partialEventIndicator\": true,\r\n    \"cargo:eventLocation\": \"http://localhost:8080/logistics-objects/gls_airport_HKG\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/logistics-objects/{{LoID}}/logistics-events",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"logistics-objects",
+								"{{LoID}}",
+								"logistics-events"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "4 Planned ALS",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{HackToken_2024_Turkey}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/ld+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"@context\":{\r\n      \"cargo\":\"https://onerecord.iata.org/ns/cargo#\"\r\n      ,\"@vocab\": \"https://onerecord.iata.org/ns/cargo#\"\r\n   },\r\n    \"@type\": [\r\n        \"LogisticsEvent\"\r\n    ],\r\n    \"cargo:creationDate\": \"2024-10-05T22:00:00.000Z\",\r\n    \"cargo:eventDate\": \"2024-10-01T22:30:00.000Z\",\r\n    \"cargo:eventCode\": {\r\n        \"@type\": \"cargo:CodeListElement\"\r\n        , \"cargo:code\": \"ALS\"\r\n        , \"cargo:codeListName\": \"Aircraft Loading Started\"\r\n    }, \r\n    \"cargo:eventName\": \"Aircraft Loading Started\", \r\n    \"cargo:eventTimeType\": {\r\n        \"@id\": \"cargo:PLANNED\",\r\n        \"@type\": \"cargo:EventTimeType\"\r\n    },\r\n    \"cargo:partialEventIndicator\": true,\r\n    \"cargo:eventLocation\": \"http://localhost:8080/logistics-objects/gls_airport_HKG\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/logistics-objects/{{LoID}}/logistics-events",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"logistics-objects",
+								"{{LoID}}",
+								"logistics-events"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "5 Planned ALE",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{HackToken_2024_Turkey}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/ld+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"@context\":{\r\n      \"cargo\":\"https://onerecord.iata.org/ns/cargo#\"\r\n      ,\"@vocab\": \"https://onerecord.iata.org/ns/cargo#\"\r\n   },\r\n    \"@type\": [\r\n        \"LogisticsEvent\"\r\n    ],\r\n    \"cargo:creationDate\": \"2024-10-05T22:00:00.000Z\",\r\n    \"cargo:eventDate\": \"2024-10-01T23:20:00.000Z\",\r\n    \"cargo:eventCode\": {\r\n        \"@type\": \"cargo:CodeListElement\"\r\n        , \"cargo:code\": \"ALE\"\r\n        , \"cargo:codeListName\": \"Aircraft Loading Ended \"\r\n    }, \r\n    \"cargo:eventName\": \"Aircraft Loading Ended \", \r\n    \"cargo:eventTimeType\": {\r\n        \"@id\": \"cargo:PLANNED\",\r\n        \"@type\": \"cargo:EventTimeType\"\r\n    },\r\n    \"cargo:partialEventIndicator\": true,\r\n    \"cargo:eventLocation\": \"http://localhost:8080/logistics-objects/gls_airport_HKG\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/logistics-objects/{{LoID}}/logistics-events",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"logistics-objects",
+								"{{LoID}}",
+								"logistics-events"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "5.1 Planned OFB",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{HackToken_2024_Turkey}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/ld+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"@context\":{\r\n      \"cargo\":\"https://onerecord.iata.org/ns/cargo#\"\r\n      ,\"@vocab\": \"https://onerecord.iata.org/ns/cargo#\"\r\n   },\r\n    \"@type\": [\r\n        \"LogisticsEvent\"\r\n    ],\r\n    \"cargo:creationDate\": \"2024-10-05T22:00:00.000Z\",\r\n    \"cargo:eventDate\": \"2024-10-01T23:20:00.000Z\",\r\n    \"cargo:eventCode\": {\r\n        \"@type\": \"cargo:CodeListElement\"\r\n        , \"cargo:code\": \"ALE\"\r\n        , \"cargo:codeListName\": \"Aircraft Loading Ended \"\r\n    }, \r\n    \"cargo:eventName\": \"Aircraft Loading Ended \", \r\n    \"cargo:eventTimeType\": {\r\n        \"@id\": \"cargo:PLANNED\",\r\n        \"@type\": \"cargo:EventTimeType\"\r\n    },\r\n    \"cargo:partialEventIndicator\": true,\r\n    \"cargo:eventLocation\": \"http://localhost:8080/logistics-objects/gls_airport_HKG\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/logistics-objects/{{LoID}}/logistics-events",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"logistics-objects",
+								"{{LoID}}",
+								"logistics-events"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "6 Planned DEP",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{HackToken_2024_Turkey}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/ld+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"@context\":{\r\n      \"cargo\":\"https://onerecord.iata.org/ns/cargo#\"\r\n      ,\"@vocab\": \"https://onerecord.iata.org/ns/cargo#\"\r\n   },\r\n    \"@type\": [\r\n        \"LogisticsEvent\"\r\n    ],\r\n    \"cargo:creationDate\": \"2024-10-05T22:00:00.000Z\",\r\n    \"cargo:eventDate\": \"2024-10-01T23:30:00.000Z\",\r\n    \"cargo:eventCode\": {\r\n        \"@type\": \"cargo:CodeListElement\"\r\n        , \"cargo:code\": \"DEP\"\r\n        , \"cargo:codeListName\": \"Departure\"\r\n    }, \r\n    \"cargo:eventName\": \"Departure\", \r\n    \"cargo:eventTimeType\": {\r\n        \"@id\": \"cargo:PLANNED\",\r\n        \"@type\": \"cargo:EventTimeType\"\r\n    },\r\n    \"cargo:partialEventIndicator\": true,\r\n    \"cargo:eventLocation\": \"http://localhost:8080/logistics-objects/gls_airport_HKG\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/logistics-objects/{{LoID}}/logistics-events",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"logistics-objects",
+								"{{LoID}}",
+								"logistics-events"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "7 Planned FFM",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{HackToken_2024_Turkey}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/ld+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"@context\":{\r\n      \"cargo\":\"https://onerecord.iata.org/ns/cargo#\"\r\n      ,\"@vocab\": \"https://onerecord.iata.org/ns/cargo#\"\r\n   },\r\n    \"@type\": [\r\n        \"LogisticsEvent\"\r\n    ],\r\n    \"cargo:creationDate\": \"2024-10-05T22:00:00.000Z\",\r\n    \"cargo:eventDate\": \"2024-10-02T00:30:00.000Z\",\r\n    \"cargo:eventCode\": {\r\n        \"@type\": \"cargo:CodeListElement\"\r\n        , \"cargo:code\": \"FFM\"\r\n        , \"cargo:codeListName\": \"Updated Flight Manifest\"\r\n    }, \r\n    \"cargo:eventName\": \"Updated Flight Manifest\", \r\n    \"cargo:eventTimeType\": {\r\n        \"@id\": \"cargo:PLANNED\",\r\n        \"@type\": \"cargo:EventTimeType\"\r\n    },\r\n    \"cargo:partialEventIndicator\": true,\r\n    \"cargo:eventLocation\": \"http://localhost:8080/logistics-objects/gls_airport_HKG\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/logistics-objects/{{LoID}}/logistics-events",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"logistics-objects",
+								"{{LoID}}",
+								"logistics-events"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "8 Planned ARR",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{HackToken_2024_Turkey}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/ld+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"@context\":{\r\n      \"cargo\":\"https://onerecord.iata.org/ns/cargo#\"\r\n      ,\"@vocab\": \"https://onerecord.iata.org/ns/cargo#\"\r\n   },\r\n    \"@type\": [\r\n        \"LogisticsEvent\"\r\n    ],\r\n    \"cargo:creationDate\": \"2024-10-05T22:00:00.000Z\",\r\n    \"cargo:eventDate\": \"2024-10-02T06:30:00.000Z\",\r\n    \"cargo:eventCode\": {\r\n        \"@type\": \"cargo:CodeListElement\"\r\n        , \"cargo:code\": \"ARR\"\r\n        , \"cargo:codeListName\": \"Arrival\"\r\n    }, \r\n    \"cargo:eventName\": \"Arrival\", \r\n    \"cargo:eventTimeType\": {\r\n        \"@id\": \"cargo:PLANNED\",\r\n        \"@type\": \"cargo:EventTimeType\"\r\n    },\r\n    \"cargo:partialEventIndicator\": true,\r\n    \"cargo:eventLocation\": \"http://localhost:8080/logistics-objects/gls_airport_IST\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/logistics-objects/{{LoID}}/logistics-events",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"logistics-objects",
+								"{{LoID}}",
+								"logistics-events"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "9 Planned AUS",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{HackToken_2024_Turkey}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/ld+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"@context\":{\r\n      \"cargo\":\"https://onerecord.iata.org/ns/cargo#\"\r\n      ,\"@vocab\": \"https://onerecord.iata.org/ns/cargo#\"\r\n   },\r\n    \"@type\": [\r\n        \"LogisticsEvent\"\r\n    ],\r\n    \"cargo:creationDate\": \"2024-10-05T22:00:00.000Z\",\r\n    \"cargo:eventDate\": \"2024-10-02T06:50:00.000Z\",\r\n    \"cargo:eventCode\": {\r\n        \"@type\": \"cargo:CodeListElement\"\r\n        , \"cargo:code\": \"AUS\"\r\n        , \"cargo:codeListName\": \"Aircraft Unloading Started​\"\r\n    }, \r\n    \"cargo:eventName\": \"Aircraft Unloading Started​\", \r\n    \"cargo:eventTimeType\": {\r\n        \"@id\": \"cargo:PLANNED\",\r\n        \"@type\": \"cargo:EventTimeType\"\r\n    },\r\n    \"cargo:partialEventIndicator\": true,\r\n    \"cargo:eventLocation\": \"http://localhost:8080/logistics-objects/gls_airport_IST\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/logistics-objects/{{LoID}}/logistics-events",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"logistics-objects",
+								"{{LoID}}",
+								"logistics-events"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "10 Planned AUE",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{HackToken_2024_Turkey}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/ld+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"@context\":{\r\n      \"cargo\":\"https://onerecord.iata.org/ns/cargo#\"\r\n      ,\"@vocab\": \"https://onerecord.iata.org/ns/cargo#\"\r\n   },\r\n    \"@type\": [\r\n        \"LogisticsEvent\"\r\n    ],\r\n    \"cargo:creationDate\": \"2024-10-05T22:00:00.000Z\",\r\n    \"cargo:eventDate\": \"2024-10-02T08:00:00.000Z\",\r\n    \"cargo:eventCode\": {\r\n        \"@type\": \"cargo:CodeListElement\"\r\n        , \"cargo:code\": \"AUE\"\r\n        , \"cargo:codeListName\": \"Aircraft Unoading Ended\"\r\n    }, \r\n    \"cargo:eventName\": \"Aircraft Unoading Ended\", \r\n    \"cargo:eventTimeType\": {\r\n        \"@id\": \"cargo:PLANNED\",\r\n        \"@type\": \"cargo:EventTimeType\"\r\n    },\r\n    \"cargo:partialEventIndicator\": true,\r\n    \"cargo:eventLocation\": \"http://localhost:8080/logistics-objects/gls_airport_IST\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/logistics-objects/{{LoID}}/logistics-events",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"logistics-objects",
+								"{{LoID}}",
+								"logistics-events"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "11 Planned FIW",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{HackToken_2024_Turkey}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/ld+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"@context\":{\r\n      \"cargo\":\"https://onerecord.iata.org/ns/cargo#\"\r\n      ,\"@vocab\": \"https://onerecord.iata.org/ns/cargo#\"\r\n   },\r\n    \"@type\": [\r\n        \"LogisticsEvent\"\r\n    ],\r\n    \"cargo:creationDate\": \"2024-10-05T22:00:00.000Z\",\r\n    \"cargo:eventDate\": \"2024-10-02T08:30:00.000Z\",\r\n    \"cargo:eventCode\": {\r\n        \"@type\": \"cargo:CodeListElement\"\r\n        , \"cargo:code\": \"FIW\"\r\n        , \"cargo:codeListName\": \"Freight in to Warehouse\"\r\n    }, \r\n    \"cargo:eventName\": \"Freight in to Warehouse\", \r\n    \"cargo:eventTimeType\": {\r\n        \"@id\": \"cargo:PLANNED\",\r\n        \"@type\": \"cargo:EventTimeType\"\r\n    },\r\n    \"cargo:partialEventIndicator\": true,\r\n    \"cargo:eventLocation\": \"http://localhost:8080/logistics-objects/gls_airport_IST\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/logistics-objects/{{LoID}}/logistics-events",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"logistics-objects",
+								"{{LoID}}",
+								"logistics-events"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "12 Actual UWS",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{HackToken_2024_Turkey}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/ld+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"@context\":{\r\n      \"cargo\":\"https://onerecord.iata.org/ns/cargo#\"\r\n      ,\"@vocab\": \"https://onerecord.iata.org/ns/cargo#\"\r\n   },\r\n    \"@type\": [\r\n        \"LogisticsEvent\"\r\n    ],\r\n    \"cargo:creationDate\": \"2024-10-05T22:00:00.000Z\",\r\n    \"cargo:eventDate\": \"2024-10-01T21:30:00.000Z\",\r\n    \"cargo:eventCode\": {\r\n        \"@type\": \"cargo:CodeListElement\"\r\n        , \"cargo:code\": \"UWS\"\r\n        , \"cargo:codeListName\": \"Finish Palletizing\"\r\n    }, \r\n    \"cargo:eventName\": \"Finish Palletizing\", \r\n    \"cargo:eventTimeType\": {\r\n        \"@id\": \"cargo:ACTUAL\",\r\n        \"@type\": \"cargo:EventTimeType\"\r\n    },\r\n    \"cargo:partialEventIndicator\": false,\r\n    \"cargo:eventLocation\": \"http://localhost:8080/logistics-objects/gls_airport_HKG\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/logistics-objects/{{LoID}}/logistics-events",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"logistics-objects",
+								"{{LoID}}",
+								"logistics-events"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "13 Actual LIR",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{HackToken_2024_Turkey}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/ld+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"@context\":{\r\n      \"cargo\":\"https://onerecord.iata.org/ns/cargo#\"\r\n      ,\"@vocab\": \"https://onerecord.iata.org/ns/cargo#\"\r\n   },\r\n    \"@type\": [\r\n        \"LogisticsEvent\"\r\n    ],\r\n    \"cargo:creationDate\": \"2024-10-05T22:00:00.000Z\",\r\n    \"cargo:eventDate\": \"2024-10-01T22:00:00.000Z\",\r\n    \"cargo:eventCode\": {\r\n        \"@type\": \"cargo:CodeListElement\"\r\n        , \"cargo:code\": \"LIR\"\r\n        , \"cargo:codeListName\": \"Load Plan Ready\"\r\n    }, \r\n    \"cargo:eventName\": \"Load Plan Ready\", \r\n    \"cargo:eventTimeType\": {\r\n        \"@id\": \"cargo:ACTUAL\",\r\n        \"@type\": \"cargo:EventTimeType\"\r\n    },\r\n    \"cargo:partialEventIndicator\": false,\r\n    \"cargo:eventLocation\": \"http://localhost:8080/logistics-objects/gls_airport_HKG\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/logistics-objects/{{LoID}}/logistics-events",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"logistics-objects",
+								"{{LoID}}",
+								"logistics-events"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "14 Actual FOW",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{HackToken_2024_Turkey}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/ld+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"@context\":{\r\n      \"cargo\":\"https://onerecord.iata.org/ns/cargo#\"\r\n      ,\"@vocab\": \"https://onerecord.iata.org/ns/cargo#\"\r\n   },\r\n    \"@type\": [\r\n        \"LogisticsEvent\"\r\n    ],\r\n    \"cargo:creationDate\": \"2024-10-05T22:00:00.000Z\",\r\n    \"cargo:eventDate\": \"2024-10-01T22:10:00.000Z\",\r\n    \"cargo:eventCode\": {\r\n        \"@type\": \"cargo:CodeListElement\"\r\n        , \"cargo:code\": \"FOW\"\r\n        , \"cargo:codeListName\": \"Freight out of Warehouse\"\r\n    }, \r\n    \"cargo:eventName\": \"Freight out of Warehouse\", \r\n    \"cargo:eventTimeType\": {\r\n        \"@id\": \"cargo:ACTUAL\",\r\n        \"@type\": \"cargo:EventTimeType\"\r\n    },\r\n    \"cargo:partialEventIndicator\": false,\r\n    \"cargo:eventLocation\": \"http://localhost:8080/logistics-objects/gls_airport_HKG\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/logistics-objects/{{LoID}}/logistics-events",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"logistics-objects",
+						"{{LoID}}",
+						"logistics-events"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Test",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{HackToken_2024_Turkey}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/ld+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"@context\":{\r\n      \"@vocab\": \"https://onerecord.iata.org/ns/cargo#\"\r\n   },\r\n    \"@type\": [\r\n        \"LogisticsEvent\"\r\n    ],\r\n    \"eventTimeType\": \"ACTUAL\",\r\n    \"creationDate\": \"2024-10-05T22:00:00.000Z\",\r\n    \"eventDate\": \"2024-10-01T22:10:00.000Z\",\r\n    \"eventCode\": {\r\n        \"@type\": \"cargo:CodeListElement\"\r\n        , \"code\": \"FOW\"\r\n        , \"codeListName\": \"Freight out of Warehouse\"\r\n    }, \r\n    \"eventName\": \"Freight out of Warehouse\", \r\n    \"eventLocation\": {\r\n        \"@id\": \"http://localhost:8080/logistics-objects/glsairport_LAX\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/logistics-objects/glsshipment_999-333333333_59/logistics-events",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"logistics-objects",
+						"glsshipment_999-333333333_59",
+						"logistics-events"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "HackToken_2024_Turkey",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "LoID",
+			"value": "",
+			"type": "string"
+		}
+	]
+}

@@ -1,0 +1,1899 @@
+{
+	"info": {
+		"_postman_id": "bd0836c2-f875-4e27-b042-a69043544d64",
+		"name": "Hackathon IST 2024 (Test Data POC) 20241004",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3493950"
+	},
+	"item": [
+		{
+			"name": "Token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();\r",
+							"pm.environment.set(\"AuthToken23\", jsonData.access_token)"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "neone-client",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "lx7ThS5aYggdsMm42BP3wMrVqKm9WpNY",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8989/realms/neone/protocol/openid-connect/token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8989",
+					"path": [
+						"realms",
+						"neone",
+						"protocol",
+						"openid-connect",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "NEOne Create gls_airport_HKG",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{HackToken_2024_Turkey}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/ld+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"@context\": {\r\n        \"cargo\": \"https://onerecord.iata.org/ns/cargo#\"\r\n    },\r\n    \"@id\": \"http://localhost:8080/logistics-objects/gls_airport_HKG\",\r\n     \"@type\": [\r\n        \"cargo:LogisticsObject\",\r\n        \"cargo:Location\"\r\n    ],\r\n    \"cargo:locationType\": \"Airport\",\r\n     \"cargo:locationCodes\": [{\r\n        \"@type\": \"cargo:CodeListElement\",\r\n            \"cargo:code\": \"HKG\",\r\n            \"cargo:codeListName\": \"IATA Airline Coding Directory and Location Identifiers (ACD) - Airport Codes\",\r\n            \"cargo:codeListVersion\": \"2024 Edition\"\r\n    }]\r\n    \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/logistics-objects",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"logistics-objects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "NEOne Create gls_airport_IST",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{HackToken_2024_Turkey}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/ld+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"@context\": {\r\n        \"cargo\": \"https://onerecord.iata.org/ns/cargo#\"\r\n    },\r\n    \"@id\": \"http://localhost:8080/logistics-objects/gls_airport_IST\",\r\n    \"@type\": [\r\n        \"cargo:LogisticsObject\",\r\n        \"cargo:Location\"\r\n    ],\r\n    \"cargo:locationType\": \"Airport\",\r\n     \"cargo:locationCodes\": [{\r\n        \"@type\": \"cargo:CodeListElement\",\r\n            \"cargo:code\": \"IST\",\r\n            \"cargo:codeListName\": \"IATA Airline Coding Directory and Location Identifiers (ACD) - Airport Codes\",\r\n            \"cargo:codeListVersion\": \"2024 Edition\"\r\n    }]\r\n    \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/logistics-objects",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"logistics-objects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "NEOne Create gls_airport_LHR",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{HackToken_2024_Turkey}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/ld+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"@context\": {\r\n        \"cargo\": \"https://onerecord.iata.org/ns/cargo#\"\r\n    },\r\n    \"@id\": \"http://localhost:8080/logistics-objects/gls_airport_LHR\",\r\n    \"@type\": [\r\n        \"cargo:LogisticsObject\",\r\n        \"cargo:Location\"\r\n    ],\r\n    \"cargo:locationType\": \"Airport\",\r\n     \"cargo:locationCodes\": [{\r\n        \"@type\": \"cargo:CodeListElement\",\r\n            \"cargo:code\": \"LHR\",\r\n            \"cargo:codeListName\": \"IATA Airline Coding Directory and Location Identifiers (ACD) - Airport Codes\",\r\n            \"cargo:codeListVersion\": \"2024 Edition\"\r\n    }]\r\n    \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/logistics-objects",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"logistics-objects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "NEOne Create gls_airport_MXP",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{HackToken_2024_Turkey}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/ld+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"@context\": {\r\n        \"cargo\": \"https://onerecord.iata.org/ns/cargo#\"\r\n    },\r\n    \"@id\": \"http://localhost:8080/logistics-objects/gls_airport_MXP\",\r\n    \"@type\": [\r\n        \"cargo:LogisticsObject\",\r\n        \"cargo:Location\"\r\n    ],\r\n    \"cargo:locationType\": \"Airport\",\r\n     \"cargo:locationCodes\": [{\r\n        \"@type\": \"cargo:CodeListElement\",\r\n            \"cargo:code\": \"MXP\",\r\n            \"cargo:codeListName\": \"IATA Airline Coding Directory and Location Identifiers (ACD) - Airport Codes\",\r\n            \"cargo:codeListVersion\": \"2024 Edition\"\r\n    }]\r\n    \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/logistics-objects",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"logistics-objects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "NEOne Create gls_gha_HKG",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{HackToken_2024_Turkey}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/ld+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"@context\": {\r\n        \"cargo\": \"https://onerecord.iata.org/ns/cargo#\"\r\n    },\r\n    \"@id\": \"http://localhost:8080/logistics-objects/gls_gha_HKG\",\r\n   \"@type\": [\r\n        \"cargo:LogisticsObject\",\r\n        \"cargo:Company\"\r\n    ],\r\n    \"cargo:name\": \"HKG Handling Services\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/logistics-objects",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"logistics-objects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "NEOne Create gls_gha_IST",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{HackToken_2024_Turkey}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/ld+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"@context\": {\r\n        \"cargo\": \"https://onerecord.iata.org/ns/cargo#\"\r\n    },\r\n    \"@id\": \"http://localhost:8080/logistics-objects/gls_gha_IST\",\r\n   \"@type\": [\r\n        \"cargo:LogisticsObject\",\r\n        \"cargo:Company\"\r\n    ],\r\n    \"cargo:name\": \"IST Handling Services\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/logistics-objects",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"logistics-objects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "NEOne Create gls_gha_LHR",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{HackToken_2024_Turkey}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/ld+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"@context\": {\r\n        \"cargo\": \"https://onerecord.iata.org/ns/cargo#\"\r\n    },\r\n    \"@id\": \"http://localhost:8080/logistics-objects/gls_gha_LHR\",\r\n   \"@type\": [\r\n        \"cargo:LogisticsObject\",\r\n        \"cargo:Company\"\r\n    ],\r\n    \"cargo:name\": \"LHR Handling Services\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/logistics-objects",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"logistics-objects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "NEOne Create gls_gha_MXP",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{HackToken_2024_Turkey}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/ld+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"@context\": {\r\n        \"cargo\": \"https://onerecord.iata.org/ns/cargo#\"\r\n    },\r\n    \"@id\": \"http://localhost:8080/logistics-objects/gls_gha_MXP\",\r\n   \"@type\": [\r\n        \"cargo:LogisticsObject\",\r\n        \"cargo:Company\"\r\n    ],\r\n    \"cargo:name\": \"MXP Handling Services\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/logistics-objects",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"logistics-objects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "NEOne Create gls_airline_GLS",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{HackToken_2024_Turkey}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/ld+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"@context\": {\r\n        \"cargo\": \"https://onerecord.iata.org/ns/cargo#\"\r\n    },\r\n    \"@id\": \"http://localhost:8080/logistics-objects/gls_airline_GLS\",\r\n    \"@type\": [\r\n        \"cargo:LogisticsObject\",\r\n        \"cargo:Carrier\"\r\n    ],\r\n    \"cargo:shortName\": \"GLS Airline\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/logistics-objects",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"logistics-objects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "NEOne Create gls_agent_GLS",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{HackToken_2024_Turkey}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/ld+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"@context\": {\r\n        \"cargo\": \"https://onerecord.iata.org/ns/cargo#\"\r\n    },\r\n    \"@id\": \"http://localhost:8080/logistics-objects/gls_agent_GLS\",\r\n    \"@type\": [\r\n        \"cargo:LogisticsObject\",\r\n        \"cargo:Company\"\r\n    ],\r\n    \"cargo:name\": \"GLS Agent\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/logistics-objects",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"logistics-objects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "NEOne Create gls_warehouse_HKG",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{HackToken_2024_Turkey}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/ld+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"@context\": {\r\n        \"cargo\": \"https://onerecord.iata.org/ns/cargo#\"\r\n    },\r\n    \"@id\": \"http://localhost:8080/logistics-objects/gls_warehouse_HKG\",\r\n    \"@type\": [\r\n        \"cargo:LogisticsObject\",\r\n        \"cargo:Location\"\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/logistics-objects",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"logistics-objects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "NEOne Create gls_securitycheck",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{HackToken_2024_Turkey}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/ld+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\r\n    \r\n    \"@context\": {\r\n        \"cargo\": \"https://onerecord.iata.org/ns/cargo#\"\r\n    },\r\n    \"@id\": \"http://localhost:8080/logistics-objects/gls_securitycheck\",\r\n    \"@type\": [\r\n        \"cargo:LogisticsObject\",\r\n        \"cargo:Check\"\r\n    ],\r\n    \"cargo:actionStartTime\": {\r\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#dateTime\",\r\n        \"@value\": \"2024-10-01T22:00:00+00:00\"\r\n    },\r\n    \"cargo:actionTimeType\": {\r\n        \"@id\": \"https://onerecord.iata.org/ns/cargo#ACTUAL\"\r\n    },\r\n    \"cargo:checkedObject\": {\r\n        \"@id\": \"http://localhost:8080/logistics-objects/gls_piece_000-12345678\"\r\n    },\r\n    \"cargo:performedAt\": {\r\n        \"@id\": \"http://localhost:8080/logistics-objects/gls_warehouse_HKG\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/logistics-objects",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"logistics-objects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "NEOne Create gls_securitycheck_2",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{HackToken_2024_Turkey}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/ld+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\r\n    \r\n    \"@context\": {\r\n        \"cargo\": \"https://onerecord.iata.org/ns/cargo#\"\r\n    },\r\n    \"@id\": \"http://localhost:8080/logistics-objects/gls_securitycheck_2\",\r\n    \"@type\": [\r\n        \"cargo:LogisticsObject\",\r\n        \"cargo:Check\"\r\n    ],\r\n    \"cargo:actionStartTime\": {\r\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#dateTime\",\r\n        \"@value\": \"2024-10-01T22:00:00+00:00\"\r\n    },\r\n    \"cargo:actionTimeType\": {\r\n        \"@id\": \"https://onerecord.iata.org/ns/cargo#ACTUAL\"\r\n    },\r\n    \"cargo:checkedObject\": {\r\n        \"@id\": \"http://localhost:8080/logistics-objects/gls_piece_000-23456789\"\r\n    },\r\n    \"cargo:performedAt\": {\r\n        \"@id\": \"http://localhost:8080/logistics-objects/gls_warehouse_HKG\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/logistics-objects",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"logistics-objects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "NEOne Create gls_securitycheck_3",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{HackToken_2024_Turkey}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/ld+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\r\n    \r\n    \"@context\": {\r\n        \"cargo\": \"https://onerecord.iata.org/ns/cargo#\"\r\n    },\r\n    \"@id\": \"http://localhost:8080/logistics-objects/gls_securitycheck_3\",\r\n    \"@type\": [\r\n        \"cargo:LogisticsObject\",\r\n        \"cargo:Check\"\r\n    ],\r\n    \"cargo:actionStartTime\": {\r\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#dateTime\",\r\n        \"@value\": \"2024-10-01T22:00:00+00:00\"\r\n    },\r\n    \"cargo:actionTimeType\": {\r\n        \"@id\": \"https://onerecord.iata.org/ns/cargo#ACTUAL\"\r\n    },\r\n    \"cargo:checkedObject\": {\r\n        \"@id\": \"http://localhost:8080/logistics-objects/gls_piece_000-33333333\"\r\n    },\r\n    \"cargo:performedAt\": {\r\n        \"@id\": \"http://localhost:8080/logistics-objects/gls_warehouse_HKG\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/logistics-objects",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"logistics-objects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "NEOne Create gls_securitycheck_4",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{HackToken_2024_Turkey}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/ld+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\r\n    \r\n    \"@context\": {\r\n        \"cargo\": \"https://onerecord.iata.org/ns/cargo#\"\r\n    },\r\n    \"@id\": \"http://localhost:8080/logistics-objects/gls_securitycheck_4\",\r\n    \"@type\": [\r\n        \"cargo:LogisticsObject\",\r\n        \"cargo:Check\"\r\n    ],\r\n    \"cargo:actionStartTime\": {\r\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#dateTime\",\r\n        \"@value\": \"2024-10-01T22:00:00+00:00\"\r\n    },\r\n    \"cargo:actionTimeType\": {\r\n        \"@id\": \"https://onerecord.iata.org/ns/cargo#ACTUAL\"\r\n    },\r\n    \"cargo:checkedObject\": {\r\n        \"@id\": \"http://localhost:8080/logistics-objects/gls_piece_000-44444444\"\r\n    },\r\n    \"cargo:performedAt\": {\r\n        \"@id\": \"http://localhost:8080/logistics-objects/gls_warehouse_HKG\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/logistics-objects",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"logistics-objects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "NEOne Create gls_aircraft_GLS001",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{HackToken_2024_Turkey}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/ld+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n      \"@context\":{\r\n      \"cargo\":\"https://onerecord.iata.org/ns/cargo#\"\r\n   },\r\n    \"@id\": \"http://localhost:8080/logistics-objects/gls_aircraft_GLS001\",\r\n    \"@type\": [\r\n        \"cargo:LogisticsObject\",\r\n        \"cargo:TransportMeans\"\r\n    ],\r\n    \"cargo:operatedTransportMovement\": {\r\n        \"@id\": \"http://localhost:8080/logistics-objects/gls_transportmovement_GLS001\"\r\n    },\r\n    \"cargo:vehicleRegistration\": \"D-ABBB\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/logistics-objects",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"logistics-objects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "NEOne Create gls_transportmovement_GLS001",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{HackToken_2024_Turkey}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/ld+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"@context\":{\r\n      \"cargo\":\"https://onerecord.iata.org/ns/cargo#\"\r\n   },\r\n   \"@id\": \"http://localhost:8080/logistics-objects/gls_transportmovement_GLS001\",\r\n   \"@type\":\"cargo:TransportMovement\",\r\n   \"cargo:arrivalLocation\":{\r\n      \"@id\":\"http://localhost:8080/logistics-objects/gls_airport_IST\"\r\n   },\r\n   \"cargo:departureLocation\":{\r\n      \"@id\":\"http://localhost:8080/logistics-objects/gls_airport_HKG\"\r\n   },\r\n   \"cargo:executionStatus\":{\r\n      \"@id\":\"https://onerecord.iata.org/ns/cargo#ACTIVE\"\r\n   },\r\n   \"cargo:loadingActions\":[\r\n      {\r\n         \"@id\":\"http://localhost:8080/logistics-objects/gls_load_000-12345678_GLS001\"\r\n      },\r\n      {\r\n         \"@id\":\"http://localhost:8080/logistics-objects/gls_load_000-23456789_GLS001\"\r\n      },\r\n      {\r\n         \"@id\":\"http://localhost:8080/logistics-objects/gls_load_000-33333333_GLS001\"\r\n      },\r\n      {\r\n         \"@id\":\"http://localhost:8080/logistics-objects/gls_load_000-44444444_GLS001\"\r\n      }\r\n   ],\r\n   \"cargo:modeCode\":{\r\n      \"@id\":\"https://onerecord.iata.org/ns/coreCodeLists#ModeCode_AIR_TRANSPORT\"\r\n   },\r\n   \"cargo:modeQualifier\":{\r\n      \"@id\":\"https://onerecord.iata.org/ns/cargo#MAIN_CARRIAGE\"\r\n   },\r\n   \"cargo:movementTime\":[\r\n      {\r\n         \"@type\":\"cargo:MovementTime\",\r\n         \"cargo:direction\":{\r\n            \"@id\":\"https://onerecord.iata.org/ns/cargo#OUTBOUND\"\r\n         },\r\n         \"cargo:movementMilestone\":{\r\n            \"@id\":\"https://onerecord.iata.org/ns/coreCodeLists#MovementIndicator_EB\"\r\n         },\r\n         \"cargo:movementTimeType\":{\r\n            \"@id\":\"https://onerecord.iata.org/ns/cargo#ESTIMATED\"\r\n         },\r\n         \"cargo:movementTimestamp\":{\r\n            \"@type\":\"http://www.w3.org/2001/XMLSchema#dateTime\",\r\n            \"@value\":\"2024-10-01T23:30:00+00:00\"\r\n         }\r\n      },\r\n      {\r\n         \"@type\":\"cargo:MovementTime\",\r\n         \"cargo:direction\":{\r\n            \"@id\":\"https://onerecord.iata.org/ns/cargo#INBOUND\"\r\n         },\r\n         \"cargo:movementMilestone\":{\r\n            \"@id\":\"https://onerecord.iata.org/ns/coreCodeLists#MovementIndicator_EB\"\r\n         },\r\n         \"cargo:movementTimeType\":{\r\n            \"@id\":\"https://onerecord.iata.org/ns/cargo#ESTIMATED\"\r\n         },\r\n         \"cargo:movementTimestamp\":{\r\n            \"@type\":\"http://www.w3.org/2001/XMLSchema#dateTime\",\r\n            \"@value\":\"2024-10-02T06:30:00+00:00\"\r\n         }\r\n      }\r\n   ],\r\n   \"cargo:operatingTransportMeans\":{\r\n      \"@id\":\"http://localhost:8080/logistics-objects/gls_aircraft_GLS001\"\r\n   },\r\n   \"cargo:servedServices\":[\r\n      {\r\n         \"@id\":\"http://localhost:8080/logistics-objects/gls_booking_000-12345678\"\r\n      },\r\n      {\r\n         \"@id\":\"http://localhost:8080/logistics-objects/gls_booking_000-23456789\"\r\n      },\r\n      {\r\n         \"@id\":\"http://localhost:8080/logistics-objects/gls_booking_000-33333333\"\r\n      },\r\n      {\r\n         \"@id\":\"http://localhost:8080/logistics-objects/gls_booking_000-44444444\"\r\n      }\r\n   ],\r\n   \"cargo:transportIdentifier\":\"GLS001\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/logistics-objects",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"logistics-objects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "NEOne Create gls_mawb_000-12345678",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{HackToken_2024_Turkey}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/ld+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"@context\":{\r\n      \"cargo\":\"https://onerecord.iata.org/ns/cargo#\"\r\n   },\r\n   \"@id\":\"http://localhost:8080/logistics-objects/gls_mawb_000-12345678\",\r\n   \"@type\":[\r\n      \"cargo:LogisticsObject\",\r\n      \"cargo:Waybill\"\r\n   ],\r\n   \"cargo:arrivalLocation\":{\r\n      \"@id\":\"http://localhost:8080/logistics-objects/gls_airport_LHR\"\r\n   },\r\n   \"cargo:departureLocation\":{\r\n      \"@id\":\"http://localhost:8080/logistics-objects/gls_airport_HKG\"\r\n   },\r\n   \"cargo:involvedParties\":[\r\n      {\r\n         \"@id\":\"http://localhost:8080/logistics-objects/gls_gha_HKG\"\r\n      },\r\n      {\r\n         \"@id\":\"http://localhost:8080/logistics-objects/gls_gha_IST\"\r\n      },\r\n      {\r\n         \"@id\":\"http://localhost:8080/logistics-objects/gls_gha_LHR\"\r\n      },\r\n      {\r\n         \"@id\":\"http://localhost:8080/logistics-objects/gls_airline_GLS\"\r\n      },\r\n      {\r\n          \"@id\":\"http://localhost:8080/logistics-objects/gls_agent_GLS\"\r\n      }\r\n   ],\r\n   \"cargo:referredBookingOption\":{\r\n      \"@id\":\"http://localhost:8080/logistics-objects/gls_booking_000-12345678\"\r\n   },\r\n   \"cargo:shipment\":{\r\n      \"@id\":\"http://localhost:8080/logistics-objects/gls_shipment_000-12345678\"\r\n   },\r\n   \"cargo:waybillNumber\":\"12345678\",\r\n   \"cargo:waybillPrefix\":\"000\",\r\n   \"cargo:waybillType\":{\r\n      \"@id\":\"https://onerecord.iata.org/ns/cargo#DIRECT\"\r\n   }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/logistics-objects",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"logistics-objects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "NEOne Create gls_shipment_000-12345678",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{HackToken_2024_Turkey}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/ld+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"@context\":{\r\n      \"cargo\":\"https://onerecord.iata.org/ns/cargo#\"\r\n   },\r\n    \"@id\": \"http://localhost:8080/logistics-objects/gls_shipment_000-12345678\",\r\n    \"@type\": [\r\n        \"cargo:LogisticsObject\",\r\n        \"cargo:Shipment\"\r\n    ],\r\n    \"cargo:goodsDescription\": \"A2 (1)\",\r\n    \"cargo:pieces\": [\r\n        {\r\n            \"@id\": \"http://localhost:8080/logistics-objects/gls_piece_000-12345678\"\r\n        }\r\n    ],\r\n    \"cargo:waybill\": {\r\n        \"@id\": \"http://localhost:8080/logistics-objects/gls_mawb_000-12345678\"\r\n    },\r\n   \"cargo:specialHandlingCodes\": [\r\n                {\r\n                    \"@id\": \"https://onerecord.iata.org/ns/coreCodeLists#SpecialHandlingCode_HEA\"\r\n                }\r\n            ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/logistics-objects",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"logistics-objects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "NEOne Create gls_booking_000-12345678",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{HackToken_2024_Turkey}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/ld+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"@context\":{\r\n      \"cargo\":\"https://onerecord.iata.org/ns/cargo#\"\r\n   },\r\n   \"@id\":\"http://localhost:8080/logistics-objects/gls_booking_000-12345678\",\r\n   \"@type\":[\r\n      \"cargo:LogisticsObject\",\r\n      \"cargo:Booking\"\r\n   ],\r\n   \"cargo:activitySequences\":[\r\n      {\r\n         \"@type\":\"cargo:ActivitySequence\",\r\n         \"cargo:activity\":{\r\n            \"@id\":\"http://localhost:8080/logistics-objects/gls_transportmovement_GLS001\"\r\n         }\r\n      }\r\n   ],\r\n   \"cargo:issuedForWaybill\":{\r\n      \"@id\":\"http://localhost:8080/logistics-objects/gls_mawb_000-12345678\"\r\n   }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/logistics-objects",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"logistics-objects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "NEOne Create gls_piece_000-12345678",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{HackToken_2024_Turkey}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/ld+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"@context\":{\r\n      \"cargo\":\"https://onerecord.iata.org/ns/cargo#\"\r\n   },\r\n   \"@id\":\"http://localhost:8080/logistics-objects/gls_piece_000-12345678\",\r\n   \"@type\":[\r\n      \"cargo:LogisticsObject\",\r\n      \"cargo:Piece\"\r\n   ],\r\n   \"cargo:checks\":{\r\n      \"@id\":\"http://localhost:8080/logistics-objects/gls_securitycheck\"\r\n   },\r\n   \"cargo:contentProducts\":{\r\n      \"@id\":\"http://localhost:8080/logistics-objects/gls_product_000-12345678\"\r\n   },\r\n   \"cargo:goodsDescription\":\"A2 (1)\",\r\n   \"cargo:grossWeight\":{\r\n      \"@type\":\"cargo:Value\",\r\n      \"numericalValue\":{\r\n         \"@type\":\"http://www.w3.org/2001/XMLSchema#double\",\r\n         \"@value\":\"1600\"\r\n      },\r\n      \"unit\":{\r\n         \"@id\":\"https://onerecord.iata.org/ns/coreCodeLists#MeasurementUnitCode_KGM\"\r\n      }\r\n   },\r\n   \"cargo:involvedInActions\":[\r\n      {\r\n         \"@id\":\"http://localhost:8080/logistics-objects/gls_load_000-12345678_GLS001\"\r\n      }\r\n   ],\r\n   \"cargo:loadType\":{\r\n      \"@id\":\"https://onerecord.iata.org/ns/cargo#LOOSE\"\r\n   },\r\n   \"cargo:ofShipment\":{\r\n      \"@id\":\"http://localhost:8080/logistics-objects/gls_shipment_000-12345678\"\r\n   }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/logistics-objects",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"logistics-objects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "NEOne Create gls_product_000-12345678",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{HackToken_2024_Turkey}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/ld+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"@context\":{\r\n      \"cargo\":\"https://onerecord.iata.org/ns/cargo#\"\r\n   },\r\n            \"@id\": \"http://localhost:8080/logistics-objects/gls_product_000-12345678\",\r\n            \"@type\": [\r\n                \"cargo:LogisticsObject\",\r\n                \"cargo:Product\"\r\n            ],\r\n            \"cargo:describedObjects\": [\r\n                {\r\n                    \"@id\": \"http://localhost:8080/logistics-objects/gls_piece_000-12345678\"\r\n                }\r\n            ],\r\n            \"cargo:hsCode\": {\r\n                \"@type\": \"cargo:CodeListElement\",\r\n                \"cargo:code\": \"853340\",\r\n                \"cargo:codeDescription\": \"Electrical resistors (including rheostats and potentiometers), other than heating resistors:Other variable resistors, including rheostats and potentiometers:*For a power handling capacity not exceeding 20 W\",\r\n                \"cargo:codeLevel\": {\r\n                    \"@type\": \"http://www.w3.org/2001/XMLSchema#integer\",\r\n                    \"@value\": \"6\"\r\n                },\r\n                \"cargo:codeListName\": \"WCO Harmonized System Codes\",\r\n                \"cargo:codeListVersion\": \"2017\"\r\n            }\r\n        }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/logistics-objects",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"logistics-objects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "NEOne Create gls_load_000-12345678_GLS001",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{HackToken_2024_Turkey}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/ld+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"@context\":{\r\n      \"cargo\":\"https://onerecord.iata.org/ns/cargo#\"\r\n   },\r\n    \"@id\": \"http://localhost:8080/logistics-objects/gls_load_000-12345678_GLS001\",\r\n    \"@type\": [\r\n        \"cargo:LogisticsObject\",\r\n        \"cargo:Loading\"\r\n    ],\r\n    \"cargo:actionEndTime\": {\r\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#dateTime\",\r\n        \"@value\": \"2024-10-01T22:30:00+00:00\"\r\n    },\r\n    \"cargo:actionStartTime\": {\r\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#dateTime\",\r\n        \"@value\": \"2024-10-01T22:30:00+00:00\"\r\n    },\r\n    \"cargo:actionTimeType\": {\r\n        \"@id\": \"https://onerecord.iata.org/ns/cargo#ACTUAL\"\r\n    },\r\n    \"cargo:loadedPieces\": [\r\n       {\r\n            \"@id\": \"http://localhost:8080/logistics-objects/gls_piece_000-12345678\"\r\n        }\r\n    ],\r\n    \"cargo:loadingPositionIdentifier\": \"BULK\",\r\n    \"cargo:loadingType\": {\r\n        \"@id\": \"https://onerecord.iata.org/ns/cargo#LOADING\"\r\n    },\r\n    \"cargo:performedAt\": {\r\n        \"@id\": \"http://localhost:8080/logistics-objects/gls_airport_HKG\"\r\n    },\r\n    \"cargo:servedActivity\": {\r\n        \"@id\": \"http://localhost:8080/logistics-objects/gls_transportmovement_GLS001\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/logistics-objects",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"logistics-objects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "NEOne Create gls_mawb_000-23456789",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{HackToken_2024_Turkey}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/ld+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"@context\":{\r\n      \"cargo\":\"https://onerecord.iata.org/ns/cargo#\"\r\n   },\r\n   \"@id\":\"http://localhost:8080/logistics-objects/gls_mawb_000-23456789\",\r\n   \"@type\":[\r\n      \"cargo:LogisticsObject\",\r\n      \"cargo:Waybill\"\r\n   ],\r\n   \"cargo:arrivalLocation\":{\r\n      \"@id\":\"http://localhost:8080/logistics-objects/gls_airport_MXP\"\r\n   },\r\n   \"cargo:departureLocation\":{\r\n      \"@id\":\"http://localhost:8080/logistics-objects/gls_airport_HKG\"\r\n   },\r\n   \"cargo:involvedParties\":[\r\n      {\r\n         \"@id\":\"http://localhost:8080/logistics-objects/gls_gha_HKG\"\r\n      },\r\n      {\r\n         \"@id\":\"http://localhost:8080/logistics-objects/gls_gha_IST\"\r\n      },\r\n      {\r\n         \"@id\":\"http://localhost:8080/logistics-objects/gls_gha_MXP\"\r\n      },\r\n      {\r\n         \"@id\":\"http://localhost:8080/logistics-objects/gls_airline_GLS\"\r\n      },\r\n      {\r\n          \"@id\":\"http://localhost:8080/logistics-objects/gls_agent_GLS\"\r\n      }\r\n   ],\r\n   \"cargo:referredBookingOption\":{\r\n      \"@id\":\"http://localhost:8080/logistics-objects/gls_booking_000-23456789\"\r\n   },\r\n   \"cargo:shipment\":{\r\n      \"@id\":\"http://localhost:8080/logistics-objects/gls_shipment_000-23456789\"\r\n   },\r\n   \"cargo:waybillNumber\":\"23456789\",\r\n   \"cargo:waybillPrefix\":\"000\",\r\n   \"cargo:waybillType\":{\r\n      \"@id\":\"https://onerecord.iata.org/ns/cargo#DIRECT\"\r\n   }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/logistics-objects",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"logistics-objects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "NEOne Create gls_shipment_000-23456789",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{HackToken_2024_Turkey}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/ld+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"@context\":{\r\n      \"cargo\":\"https://onerecord.iata.org/ns/cargo#\"\r\n   },\r\n    \"@id\": \"http://localhost:8080/logistics-objects/gls_shipment_000-23456789\",\r\n    \"@type\": [\r\n        \"cargo:LogisticsObject\",\r\n        \"cargo:Shipment\"\r\n    ],\r\n    \"cargo:goodsDescription\": \"H2 (1)\",\r\n    \"cargo:pieces\": [\r\n        {\r\n            \"@id\": \"http://localhost:8080/logistics-objects/gls_piece_000-23456789\"\r\n        }\r\n    ],\r\n    \"cargo:waybill\": {\r\n        \"@id\": \"http://localhost:8080/logistics-objects/gls_mawb_000-23456789\"\r\n    },\r\n   \"cargo:specialHandlingCodes\": [\r\n                {\r\n                    \"@id\": \"https://onerecord.iata.org/ns/coreCodeLists#SpecialHandlingCode_COL\"\r\n                }\r\n            ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/logistics-objects",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"logistics-objects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "NEOne Create gls_booking_000-23456789",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{HackToken_2024_Turkey}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/ld+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"@context\":{\r\n      \"cargo\":\"https://onerecord.iata.org/ns/cargo#\"\r\n   },\r\n   \"@id\":\"http://localhost:8080/logistics-objects/gls_booking_000-23456789\",\r\n   \"@type\":[\r\n      \"cargo:LogisticsObject\",\r\n      \"cargo:Booking\"\r\n   ],\r\n   \"cargo:activitySequences\":[\r\n      {\r\n         \"@type\":\"cargo:ActivitySequence\",\r\n         \"cargo:activity\":{\r\n            \"@id\":\"http://localhost:8080/logistics-objects/gls_transportmovement_GLS001\"\r\n         }\r\n      }\r\n   ],\r\n   \"cargo:issuedForWaybill\":{\r\n      \"@id\":\"http://localhost:8080/logistics-objects/gls_mawb_000-23456780\"\r\n   }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/logistics-objects",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"logistics-objects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "NEOne Create gls_piece_000-23456789",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{HackToken_2024_Turkey}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/ld+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"@context\":{\r\n      \"cargo\":\"https://onerecord.iata.org/ns/cargo#\"\r\n   },\r\n   \"@id\":\"http://localhost:8080/logistics-objects/gls_piece_000-23456789\",\r\n   \"@type\":[\r\n      \"cargo:LogisticsObject\",\r\n      \"cargo:Piece\"\r\n   ],\r\n   \"cargo:checks\":{\r\n      \"@id\":\"http://localhost:8080/logistics-objects/gls_securitycheck_2\"\r\n   },\r\n   \"cargo:contentProducts\":{\r\n      \"@id\":\"http://localhost:8080/logistics-objects/gls_product_000-23456789\"\r\n   },\r\n   \"cargo:goodsDescription\":\"H2 (1)\",\r\n   \"cargo:grossWeight\":{\r\n      \"@type\":\"cargo:Value\",\r\n      \"numericalValue\":{\r\n         \"@type\":\"http://www.w3.org/2001/XMLSchema#double\",\r\n         \"@value\":\"2000\"\r\n      },\r\n      \"unit\":{\r\n         \"@id\":\"https://onerecord.iata.org/ns/coreCodeLists#MeasurementUnitCode_KGM\"\r\n      }\r\n   },\r\n   \"cargo:involvedInActions\":[\r\n      {\r\n         \"@id\":\"http://localhost:8080/logistics-objects/gls_load_000_23456789_GLS001\"\r\n      }\r\n   ],\r\n   \"cargo:loadType\":{\r\n      \"@id\":\"https://onerecord.iata.org/ns/cargo#LOOSE\"\r\n   },\r\n   \"cargo:ofShipment\":{\r\n      \"@id\":\"http://localhost:8080/logistics-objects/gls_shipment_000-23456789\"\r\n   }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/logistics-objects",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"logistics-objects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "NEOne Create gls_product_000-23456789",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{HackToken_2024_Turkey}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/ld+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"@context\":{\r\n      \"cargo\":\"https://onerecord.iata.org/ns/cargo#\"\r\n   },\r\n            \"@id\": \"http://localhost:8080/logistics-objects/gls_product_000-23456789\",\r\n            \"@type\": [\r\n                \"cargo:LogisticsObject\",\r\n                \"cargo:Product\"\r\n            ],\r\n            \"cargo:describedObjects\": [\r\n                {\r\n                    \"@id\": \"http://localhost:8080/logistics-objects/gls_piece_000-23456789\"\r\n                }\r\n            ],\r\n            \"cargo:hsCode\": {\r\n                \"@type\": \"cargo:CodeListElement\",\r\n                \"cargo:code\": \"853340\",\r\n                \"cargo:codeDescription\": \"Electrical resistors (including rheostats and potentiometers), other than heating resistors:Other variable resistors, including rheostats and potentiometers:*For a power handling capacity not exceeding 20 W\",\r\n                \"cargo:codeLevel\": {\r\n                    \"@type\": \"http://www.w3.org/2001/XMLSchema#integer\",\r\n                    \"@value\": \"6\"\r\n                },\r\n                \"cargo:codeListName\": \"WCO Harmonized System Codes\",\r\n                \"cargo:codeListVersion\": \"2017\"\r\n            }\r\n        }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/logistics-objects",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"logistics-objects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "NEOne Create gls_load_000-23456789_GLS001",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{HackToken_2024_Turkey}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/ld+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"@context\":{\r\n      \"cargo\":\"https://onerecord.iata.org/ns/cargo#\"\r\n   },\r\n    \"@id\": \"http://localhost:8080/logistics-objects/gls_load_000-23456789_GLS001\",\r\n    \"@type\": [\r\n        \"cargo:LogisticsObject\",\r\n        \"cargo:Loading\"\r\n    ],\r\n    \"cargo:actionEndTime\": {\r\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#dateTime\",\r\n        \"@value\": \"2024-10-01T22:30:00+00:00\"\r\n    },\r\n    \"cargo:actionStartTime\": {\r\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#dateTime\",\r\n        \"@value\": \"2024-10-01T22:30:00+00:00\"\r\n    },\r\n    \"cargo:actionTimeType\": {\r\n        \"@id\": \"https://onerecord.iata.org/ns/cargo#ACTUAL\"\r\n    },\r\n    \"cargo:loadedPieces\": [\r\n       {\r\n            \"@id\": \"http://localhost:8080/logistics-objects/gls_piece_000-23456789\"\r\n        }\r\n    ],\r\n    \"cargo:loadingPositionIdentifier\": \"BULK\",\r\n    \"cargo:loadingType\": {\r\n        \"@id\": \"https://onerecord.iata.org/ns/cargo#LOADING\"\r\n    },\r\n    \"cargo:performedAt\": {\r\n        \"@id\": \"http://localhost:8080/logistics-objects/gls_airport_HKG\"\r\n    },\r\n    \"cargo:servedActivity\": {\r\n        \"@id\": \"http://localhost:8080/logistics-objects/gls_transportmovement_GLS001\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/logistics-objects",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"logistics-objects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "NEOne Create gls_mawb_000-33333333",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{HackToken_2024_Turkey}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/ld+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"@context\":{\r\n      \"cargo\":\"https://onerecord.iata.org/ns/cargo#\"\r\n   },\r\n   \"@id\":\"http://localhost:8080/logistics-objects/gls_mawb_000-33333333\",\r\n   \"@type\":[\r\n      \"cargo:LogisticsObject\",\r\n      \"cargo:Waybill\"\r\n   ],\r\n   \"cargo:arrivalLocation\":{\r\n      \"@id\":\"http://localhost:8080/logistics-objects/gls_airport_IST\"\r\n   },\r\n   \"cargo:departureLocation\":{\r\n      \"@id\":\"http://localhost:8080/logistics-objects/gls_airport_HKG\"\r\n   },\r\n   \"cargo:involvedParties\":[\r\n      {\r\n         \"@id\":\"http://localhost:8080/logistics-objects/gls_gha_HKG\"\r\n      },\r\n      {\r\n         \"@id\":\"http://localhost:8080/logistics-objects/gls_gha_IST\"\r\n      },\r\n      {\r\n         \"@id\":\"http://localhost:8080/logistics-objects/gls_airline_GLS\"\r\n      },\r\n      {\r\n          \"@id\":\"http://localhost:8080/logistics-objects/gls_agent_GLS\"\r\n      }\r\n   ],\r\n   \"cargo:referredBookingOption\":{\r\n      \"@id\":\"http://localhost:8080/logistics-objects/gls_booking_000-33333333\"\r\n   },\r\n   \"cargo:shipment\":{\r\n      \"@id\":\"http://localhost:8080/logistics-objects/gls_shipment_000-33333333\"\r\n   },\r\n   \"cargo:waybillNumber\":\"33333333\",\r\n   \"cargo:waybillPrefix\":\"000\",\r\n   \"cargo:waybillType\":{\r\n      \"@id\":\"https://onerecord.iata.org/ns/cargo#DIRECT\"\r\n   }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/logistics-objects",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"logistics-objects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "NEOne Create gls_shipment_000-33333333",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{HackToken_2024_Turkey}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/ld+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"@context\":{\r\n      \"cargo\":\"https://onerecord.iata.org/ns/cargo#\"\r\n   },\r\n    \"@id\": \"http://localhost:8080/logistics-objects/gls_shipment_000-33333333\",\r\n    \"@type\": [\r\n        \"cargo:LogisticsObject\",\r\n        \"cargo:Shipment\"\r\n    ],\r\n    \"cargo:goodsDescription\": \"A2 (1)\",\r\n    \"cargo:pieces\": [\r\n        {\r\n            \"@id\": \"http://localhost:8080/logistics-objects/gls_piece_000-33333333\"\r\n        }\r\n    ],\r\n    \"cargo:waybill\": {\r\n        \"@id\": \"http://localhost:8080/logistics-objects/gls_mawb_000-33333333\"\r\n    },\r\n   \"cargo:specialHandlingCodes\": [\r\n                {\r\n                    \"@id\": \"https://onerecord.iata.org/ns/coreCodeLists#SpecialHandlingCode_VUN\"\r\n                }\r\n            ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/logistics-objects",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"logistics-objects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "NEOne Create gls_booking_000-33333333",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{HackToken_2024_Turkey}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/ld+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"@context\":{\r\n      \"cargo\":\"https://onerecord.iata.org/ns/cargo#\"\r\n   },\r\n   \"@id\":\"http://localhost:8080/logistics-objects/gls_booking_000-33333333\",\r\n   \"@type\":[\r\n      \"cargo:LogisticsObject\",\r\n      \"cargo:Booking\"\r\n   ],\r\n   \"cargo:activitySequences\":[\r\n      {\r\n         \"@type\":\"cargo:ActivitySequence\",\r\n         \"cargo:activity\":{\r\n            \"@id\":\"http://localhost:8080/logistics-objects/gls_transportmovement_GLS001\"\r\n         }\r\n      }\r\n   ],\r\n   \"cargo:issuedForWaybill\":{\r\n      \"@id\":\"http://localhost:8080/logistics-objects/gls_mawb_000-33333333\"\r\n   }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/logistics-objects",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"logistics-objects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "NEOne Create gls_piece_000-33333333",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{HackToken_2024_Turkey}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/ld+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"@context\":{\r\n      \"cargo\":\"https://onerecord.iata.org/ns/cargo#\"\r\n   },\r\n   \"@id\":\"http://localhost:8080/logistics-objects/gls_piece_000-33333333\",\r\n   \"@type\":[\r\n      \"cargo:LogisticsObject\",\r\n      \"cargo:Piece\"\r\n   ],\r\n   \"cargo:checks\":{\r\n      \"@id\":\"http://localhost:8080/logistics-objects/gls_securitycheck_3\"\r\n   },\r\n   \"cargo:contentProducts\":{\r\n      \"@id\":\"http://localhost:8080/logistics-objects/gls_product_000-33333333\"\r\n   },\r\n   \"cargo:goodsDescription\":\"A2 (1)\",\r\n   \"cargo:grossWeight\":{\r\n      \"@type\":\"cargo:Value\",\r\n      \"numericalValue\":{\r\n         \"@type\":\"http://www.w3.org/2001/XMLSchema#double\",\r\n         \"@value\":\"1200\"\r\n      },\r\n      \"unit\":{\r\n         \"@id\":\"https://onerecord.iata.org/ns/coreCodeLists#MeasurementUnitCode_KGM\"\r\n      }\r\n   },\r\n   \"cargo:involvedInActions\":[\r\n      {\r\n         \"@id\":\"http://localhost:8080/logistics-objects/gls_load_000_33333333_GLS001\"\r\n      }\r\n   ],\r\n   \"cargo:loadType\":{\r\n      \"@id\":\"https://onerecord.iata.org/ns/cargo#LOOSE\"\r\n   },\r\n   \"cargo:ofShipment\":{\r\n      \"@id\":\"http://localhost:8080/logistics-objects/gls_shipment_000-33333333\"\r\n   }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/logistics-objects",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"logistics-objects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "NEOne Create gls_product_000-33333333",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{HackToken_2024_Turkey}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/ld+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"@context\":{\r\n      \"cargo\":\"https://onerecord.iata.org/ns/cargo#\"\r\n   },\r\n            \"@id\": \"http://localhost:8080/logistics-objects/gls_product_000-33333333\",\r\n            \"@type\": [\r\n                \"cargo:LogisticsObject\",\r\n                \"cargo:Product\"\r\n            ],\r\n            \"cargo:describedObjects\": [\r\n                {\r\n                    \"@id\": \"http://localhost:8080/logistics-objects/gls_piece_000-33333333\"\r\n                }\r\n            ],\r\n            \"cargo:hsCode\": {\r\n                \"@type\": \"cargo:CodeListElement\",\r\n                \"cargo:code\": \"853340\",\r\n                \"cargo:codeDescription\": \"Electrical resistors (including rheostats and potentiometers), other than heating resistors:Other variable resistors, including rheostats and potentiometers:*For a power handling capacity not exceeding 20 W\",\r\n                \"cargo:codeLevel\": {\r\n                    \"@type\": \"http://www.w3.org/2001/XMLSchema#integer\",\r\n                    \"@value\": \"6\"\r\n                },\r\n                \"cargo:codeListName\": \"WCO Harmonized System Codes\",\r\n                \"cargo:codeListVersion\": \"2017\"\r\n            }\r\n        }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/logistics-objects",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"logistics-objects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "NEOne Create gls_load_000-33333333_GLS001",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{HackToken_2024_Turkey}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/ld+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"@context\":{\r\n      \"cargo\":\"https://onerecord.iata.org/ns/cargo#\"\r\n   },\r\n    \"@id\": \"http://localhost:8080/logistics-objects/gls_load_000-33333333_GLS001\",\r\n    \"@type\": [\r\n        \"cargo:LogisticsObject\",\r\n        \"cargo:Loading\"\r\n    ],\r\n    \"cargo:actionEndTime\": {\r\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#dateTime\",\r\n        \"@value\": \"2024-10-01T22:30:00+00:00\"\r\n    },\r\n    \"cargo:actionStartTime\": {\r\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#dateTime\",\r\n        \"@value\": \"2024-10-01T22:30:00+00:00\"\r\n    },\r\n    \"cargo:actionTimeType\": {\r\n        \"@id\": \"https://onerecord.iata.org/ns/cargo#ACTUAL\"\r\n    },\r\n    \"cargo:loadedPieces\": [\r\n       {\r\n            \"@id\": \"http://localhost:8080/logistics-objects/gls_piece_000-33333333\"\r\n        }\r\n    ],\r\n    \"cargo:loadingPositionIdentifier\": \"BULK\",\r\n    \"cargo:loadingType\": {\r\n        \"@id\": \"https://onerecord.iata.org/ns/cargo#LOADING\"\r\n    },\r\n    \"cargo:performedAt\": {\r\n        \"@id\": \"http://localhost:8080/logistics-objects/gls_airport_HKG\"\r\n    },\r\n    \"cargo:servedActivity\": {\r\n        \"@id\": \"http://localhost:8080/logistics-objects/gls_transportmovement_GLS001\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/logistics-objects",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"logistics-objects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "NEOne Create gls_mawb_000-44444444",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{HackToken_2024_Turkey}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/ld+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"@context\":{\r\n      \"cargo\":\"https://onerecord.iata.org/ns/cargo#\"\r\n   },\r\n   \"@id\":\"http://localhost:8080/logistics-objects/gls_mawb_000-44444444\",\r\n   \"@type\":[\r\n      \"cargo:LogisticsObject\",\r\n      \"cargo:Waybill\"\r\n   ],\r\n   \"cargo:arrivalLocation\":{\r\n      \"@id\":\"http://localhost:8080/logistics-objects/gls_airport_IST\"\r\n   },\r\n   \"cargo:departureLocation\":{\r\n      \"@id\":\"http://localhost:8080/logistics-objects/gls_airport_HKG\"\r\n   },\r\n   \"cargo:involvedParties\":[\r\n      {\r\n         \"@id\":\"http://localhost:8080/logistics-objects/gls_gha_HKG\"\r\n      },\r\n      {\r\n         \"@id\":\"http://localhost:8080/logistics-objects/gls_gha_IST\"\r\n      },\r\n      {\r\n         \"@id\":\"http://localhost:8080/logistics-objects/gls_airline_GLS\"\r\n      },\r\n      {\r\n          \"@id\":\"http://localhost:8080/logistics-objects/gls_agent_GLS\"\r\n      }\r\n   ],\r\n   \"cargo:referredBookingOption\":{\r\n      \"@id\":\"http://localhost:8080/logistics-objects/gls_booking_000-44444444\"\r\n   },\r\n   \"cargo:shipment\":{\r\n      \"@id\":\"http://localhost:8080/logistics-objects/gls_shipment_000-44444444\"\r\n   },\r\n   \"cargo:waybillNumber\":\"44444444\",\r\n   \"cargo:waybillPrefix\":\"000\",\r\n   \"cargo:waybillType\":{\r\n      \"@id\":\"https://onerecord.iata.org/ns/cargo#DIRECT\"\r\n   }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/logistics-objects",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"logistics-objects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "NEOne Create gls_shipment_000-44444444",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{HackToken_2024_Turkey}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/ld+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"@context\":{\r\n      \"cargo\":\"https://onerecord.iata.org/ns/cargo#\"\r\n   },\r\n    \"@id\": \"http://localhost:8080/logistics-objects/gls_shipment_000-44444444\",\r\n    \"@type\": [\r\n        \"cargo:LogisticsObject\",\r\n        \"cargo:Shipment\"\r\n    ],\r\n    \"cargo:goodsDescription\": \"A2 (1)\",\r\n    \"cargo:pieces\": [\r\n        {\r\n            \"@id\": \"http://localhost:8080/logistics-objects/gls_piece_000-44444444\"\r\n        }\r\n    ],\r\n    \"cargo:waybill\": {\r\n        \"@id\": \"http://localhost:8080/logistics-objects/gls_mawb_000-44444444\"\r\n    },\r\n   \"cargo:specialHandlingCodes\": [\r\n                {\r\n                    \"@id\": \"https://onerecord.iata.org/ns/coreCodeLists#SpecialHandlingCode_VUN\"\r\n                }\r\n            ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/logistics-objects",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"logistics-objects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "NEOne Create gls_booking_000-44444444",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{HackToken_2024_Turkey}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/ld+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"@context\":{\r\n      \"cargo\":\"https://onerecord.iata.org/ns/cargo#\"\r\n   },\r\n   \"@id\":\"http://localhost:8080/logistics-objects/gls_booking_000-44444444\",\r\n   \"@type\":[\r\n      \"cargo:LogisticsObject\",\r\n      \"cargo:Booking\"\r\n   ],\r\n   \"cargo:activitySequences\":[\r\n      {\r\n         \"@type\":\"cargo:ActivitySequence\",\r\n         \"cargo:activity\":{\r\n            \"@id\":\"http://localhost:8080/logistics-objects/gls_transportmovement_GLS001\"\r\n         }\r\n      }\r\n   ],\r\n   \"cargo:issuedForWaybill\":{\r\n      \"@id\":\"http://localhost:8080/logistics-objects/gls_mawb_000-44444444\"\r\n   }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/logistics-objects",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"logistics-objects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "NEOne Create gls_piece_000-44444444",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{HackToken_2024_Turkey}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/ld+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"@context\":{\r\n      \"cargo\":\"https://onerecord.iata.org/ns/cargo#\"\r\n   },\r\n   \"@id\":\"http://localhost:8080/logistics-objects/gls_piece_000-44444444\",\r\n   \"@type\":[\r\n      \"cargo:LogisticsObject\",\r\n      \"cargo:Piece\"\r\n   ],\r\n   \"cargo:checks\":{\r\n      \"@id\":\"http://localhost:8080/logistics-objects/gls_securitycheck_4\"\r\n   },\r\n   \"cargo:contentProducts\":{\r\n      \"@id\":\"http://localhost:8080/logistics-objects/gls_product_000-44444444\"\r\n   },\r\n   \"cargo:goodsDescription\":\"A2 (1)\",\r\n   \"cargo:grossWeight\":{\r\n      \"@type\":\"cargo:Value\",\r\n      \"numericalValue\":{\r\n         \"@type\":\"http://www.w3.org/2001/XMLSchema#double\",\r\n         \"@value\":\"1200\"\r\n      },\r\n      \"unit\":{\r\n         \"@id\":\"https://onerecord.iata.org/ns/coreCodeLists#MeasurementUnitCode_KGM\"\r\n      }\r\n   },\r\n   \"cargo:involvedInActions\":[\r\n      {\r\n         \"@id\":\"http://localhost:8080/logistics-objects/gls_load_000_44444444_GLS001\"\r\n      }\r\n   ],\r\n   \"cargo:loadType\":{\r\n      \"@id\":\"https://onerecord.iata.org/ns/cargo#LOOSE\"\r\n   },\r\n   \"cargo:ofShipment\":{\r\n      \"@id\":\"http://localhost:8080/logistics-objects/gls_shipment_000-44444444\"\r\n   }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/logistics-objects",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"logistics-objects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "NEOne Create gls_product_000-44444444",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{HackToken_2024_Turkey}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/ld+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"@context\":{\r\n      \"cargo\":\"https://onerecord.iata.org/ns/cargo#\"\r\n   },\r\n            \"@id\": \"http://localhost:8080/logistics-objects/gls_product_000-44444444\",\r\n            \"@type\": [\r\n                \"cargo:LogisticsObject\",\r\n                \"cargo:Product\"\r\n            ],\r\n            \"cargo:describedObjects\": [\r\n                {\r\n                    \"@id\": \"http://localhost:8080/logistics-objects/gls_piece_000-44444444\"\r\n                }\r\n            ],\r\n            \"cargo:hsCode\": {\r\n                \"@type\": \"cargo:CodeListElement\",\r\n                \"cargo:code\": \"853340\",\r\n                \"cargo:codeDescription\": \"Electrical resistors (including rheostats and potentiometers), other than heating resistors:Other variable resistors, including rheostats and potentiometers:*For a power handling capacity not exceeding 20 W\",\r\n                \"cargo:codeLevel\": {\r\n                    \"@type\": \"http://www.w3.org/2001/XMLSchema#integer\",\r\n                    \"@value\": \"6\"\r\n                },\r\n                \"cargo:codeListName\": \"WCO Harmonized System Codes\",\r\n                \"cargo:codeListVersion\": \"2017\"\r\n            }\r\n        }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/logistics-objects",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"logistics-objects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "NEOne Create gls_load_000-44444444_GLS001",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{HackToken_2024_Turkey}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/ld+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"@context\":{\r\n      \"cargo\":\"https://onerecord.iata.org/ns/cargo#\"\r\n   },\r\n    \"@id\": \"http://localhost:8080/logistics-objects/gls_load_000-44444444_GLS001\",\r\n    \"@type\": [\r\n        \"cargo:LogisticsObject\",\r\n        \"cargo:Loading\"\r\n    ],\r\n    \"cargo:actionEndTime\": {\r\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#dateTime\",\r\n        \"@value\": \"2024-10-01T22:30:00+00:00\"\r\n    },\r\n    \"cargo:actionStartTime\": {\r\n        \"@type\": \"http://www.w3.org/2001/XMLSchema#dateTime\",\r\n        \"@value\": \"2024-10-01T22:30:00+00:00\"\r\n    },\r\n    \"cargo:actionTimeType\": {\r\n        \"@id\": \"https://onerecord.iata.org/ns/cargo#ACTUAL\"\r\n    },\r\n    \"cargo:loadedPieces\": [\r\n       {\r\n            \"@id\": \"http://localhost:8080/logistics-objects/gls_piece_000-44444444\"\r\n        }\r\n    ],\r\n    \"cargo:loadingPositionIdentifier\": \"BULK\",\r\n    \"cargo:loadingType\": {\r\n        \"@id\": \"https://onerecord.iata.org/ns/cargo#LOADING\"\r\n    },\r\n    \"cargo:performedAt\": {\r\n        \"@id\": \"http://localhost:8080/logistics-objects/gls_airport_HKG\"\r\n    },\r\n    \"cargo:servedActivity\": {\r\n        \"@id\": \"http://localhost:8080/logistics-objects/gls_transportmovement_GLS001\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/logistics-objects",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"logistics-objects"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "HackToken_2024_Turkey",
+			"value": "",
+			"type": "string"
+		}
+	]
+}

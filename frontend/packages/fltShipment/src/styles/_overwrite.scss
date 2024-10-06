@@ -1,0 +1,167 @@
+/********* quasar *********/
+.q-radio {
+  &__inner {
+    &--truthy {
+      color: $EzyBooking-sky-blue !important;
+    }
+
+    &--falsy {
+      color: $EzyBooking-light-gray-3;
+    }
+
+    &:before {
+      opacity: 0 !important;
+    }
+  }
+
+  &:not(.disabled) {
+    &:hover {
+      .q-radio__inner {
+        color: $EzyBooking-sky-blue-hover;
+      }
+    }
+  }
+
+  &[aria-checked='true'] {
+    .q-radio__label {
+      font-weight: 600;
+    }
+  }
+
+  &[aria-disabled='true'] {
+    transition: all 1s ease-in-out;
+    .q-radio__label {
+      color: $EzyBooking-light-gray-4;
+    }
+  }
+}
+
+.q-item {
+  &.q-manual-focusable {
+    &--focused {
+      background: #f2fbf8;
+
+      > .q-focus-helper {
+        background-color: none !important;
+        opacity: 0 !important;
+      }
+    }
+
+    .q-item__label {
+      color: $EzyBooking-blue-gray;
+    }
+  }
+}
+
+.q-checkbox {
+  &.disabled {
+    .q-checkbox__inner {
+      color: #cbd5e1;
+    }
+
+    .q-checkbox__label {
+      color: #cbd5e1;
+    }
+  }
+
+  &:not(.disabled) {
+    &:hover {
+      // hide quasar default hover effect
+      .q-checkbox__inner::before {
+        display: none;
+      }
+
+      // add custom hover effect
+      .q-checkbox__bg {
+        border-color: $EzyBooking-sky-blue-hover;
+      }
+    }
+  }
+
+  .q-checkbox__inner {
+    &--truthy,
+    &--indet {
+      color: $EzyBooking-sky-blue;
+      .q-checkbox__bg {
+        border-color: currentColor !important;
+      }
+
+      ~ .q-checkbox__label {
+        font-weight: 600;
+      }
+    }
+
+    &--falsy {
+      color: $EzyBooking-blue-gray;
+    }
+  }
+
+  &__label {
+    color: #0f172a;
+  }
+}
+
+.q-dialog__inner--minimized > div {
+  max-width: 100%;
+}
+
+.disabled,
+.disabled * {
+  cursor: text !important;
+}
+
+.q-field__inner.relative-position.col.self-stretch {
+  cursor: text;
+}
+
+.text-weight-bold {
+  font-weight: 600;
+}
+
+.q-placeholder::placeholder {
+  color: $EzyBooking-light-gray-3;
+  opacity: 1;
+}
+
+.q-field {
+  &__control {
+    &:before {
+      border-color: $EzyBooking-light-gray-3;
+    }
+  }
+
+  &.q-field--error {
+    .q-field__bottom,
+    .q-icon {
+      padding: 4px 0;
+      color: $EzyBooking-red !important;
+      font-weight: normal;
+    }
+  }
+
+  &.q-field--with-bottom {
+    padding-bottom: 0;
+  }
+}
+
+.q-field--outlined .q-field__control:before {
+  border: 1px solid #cbd5e1;
+}
+
+/********* base *********/
+// hide input spin button - Chrome, Safari, Edge, Opera
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+// hide input spin button - Firefox
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+}

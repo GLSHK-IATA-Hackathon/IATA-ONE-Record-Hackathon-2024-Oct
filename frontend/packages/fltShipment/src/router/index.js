@@ -1,6 +1,8 @@
 import { createWebHistory, createRouter } from "vue-router";
-
-import FltShipment from "../components/FltShipment.vue";
+import DefaultLayout from '@/layouts/DefaultLayout.vue'
+import FltShipment from "@/components/FltShipment.vue";
+import ArrivalPage from '@/views/ArrivalPage.vue'
+import ShipmentJourneyPage from '@/views/ShipmentJourneyPage.vue'
 import { i18n } from "../locales";
 
 const {
@@ -12,46 +14,39 @@ const routes = [
     path: "/",
     redirect: {
       name: "fltShipment",
-      params: { lang: fallbackLocale.value },
     },
   },
   {
-    path: "/:lang",
-    redirect: {
-      name: "fltShipment",
-      params: { lang: fallbackLocale.value },
-    },
-    children: [
-      {
-        path: "fltShipment",
-        name: "fltShipment",
-        component: FltShipment,
-      },
-    ],
+    path: "/fltShipment",
+    name: "fltShipment",
+    component: FltShipment,
+    /*
+    meta: {
+      layout: DefaultLayout,
+    }
+    */
   },
+  {
+    path: '/arrival/:flightNo',
+    name: 'Arrival',
+    component: ArrivalPage,
+    meta: {
+      layout: DefaultLayout,
+    }
+  },
+  {
+    path: '/shipmentJourney',
+    name: 'ShipmentJourney',
+    component: ShipmentJourneyPage,
+    meta: {
+      layout: DefaultLayout,
+    }
+  }
 ];
 
 const router = createRouter({
   history: createWebHistory("/"),
   routes,
-});
-
-router.beforeEach((to, from, next) => {
-  const {
-    params: { lang },
-  } = to;
-
-  // adjust locale
-  if (!availableLocales.includes(lang)) {
-    console.error(
-      `invalid lang in url, redirect to fallback locale:${fallbackLocale.value}`
-    );
-    next(`${fallbackLocale.value}/fltShipment`);
-  } else {
-    i18n.global.locale.value = lang;
-  }
-
-  next();
 });
 
 export default router;

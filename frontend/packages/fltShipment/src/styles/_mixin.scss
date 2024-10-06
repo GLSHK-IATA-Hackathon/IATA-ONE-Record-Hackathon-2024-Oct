@@ -1,0 +1,69 @@
+// MEDIA QUERY MANAGER
+/*
+0 - 375px:      Mobile portrait
+376 - 812px:    Mobile landscape
+813 - 991px:    Tablet
+992 - 1280px:   Small
+1281 - 1440px:  Medium
+1441 - 1920px:  Large
+1920px+:        Extra Large
+
+$breakpoint argument choices:
+- mobile-portrait
+- mobile-landscape
+- tablet
+- sm
+- md
+- lg
+- xl
+*/
+@mixin respond($breakpoint) {
+  @if $breakpoint == mobile-portrait {
+    @media screen and (max-width: 375px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == mobile-landscape {
+    @media screen and (max-width: 812px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == tablet {
+    @media screen and (max-width: 991px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == sm {
+    @media screen and (max-width: 1280px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == md {
+    @media screen and (max-width: 1440px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == lg {
+    @media screen and (max-width: 1920px) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == xl {
+    @media screen and (min-width: 1921px) {
+      @content;
+    }
+  }
+}
+
+@mixin gls-base-label {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: $EzyBooking-dark-gray-1;
+}

@@ -1,0 +1,134 @@
+$EzyBooking-green: #189068;
+$EzyBooking-green-1: #1a8242;
+$EzyBooking-green-2: #10b981;
+$EzyBooking-green-3: #76b146;
+$EzyBooking-green-4: #453154;
+$EzyBooking-green-5: #005431;
+$EzyBooking-green-6: #2ec291;
+
+$EzyBooking-dark-green: #146c4f;
+$EzyBooking-dark-green-1: #0f523c;
+
+$EzyBooking-bright-green: #90be20;
+
+$EzyBooking-light-green: #9ad2c0;
+$EzyBooking-light-green-1: rgba(26, 130, 66, 0.05);
+$EzyBooking-light-green-2: #e8f4f0;
+$EzyBooking-light-green-3: #f6f7f7;
+$EzyBooking-light-green-4: #f3f9f7;
+
+$EzyBooking-blue-gray: #64748b;
+$EzyBooking-blue-1: #007c92;
+$EzyBooking-light-blue: #e9f1f3;
+$EzyBooking-light-blue-1: #e0f6fc;
+$EzyBooking-sky-blue: #00a3c5;
+$EzyBooking-sky-blue10: #00a3c510;
+$EzyBooking-sky-blue-hover: #00cdf7;
+
+$EzyBooking-light-gray: #dde0e0;
+$EzyBooking-light-gray-1: #eef0f0;
+$EzyBooking-light-gray-2: #999999;
+$EzyBooking-light-gray-3: #94a3b8;
+$EzyBooking-light-gray-4: #a09e9e;
+$EzyBooking-light-gray-5: #ededed;
+
+$EzyBooking-gray: #808b8b;
+$EzyBooking-gray-1: #d9d9d9;
+$EzyBooking-gray-2: #333737;
+
+$EzyBooking-dark-gray: #6f7c7c;
+$EzyBooking-dark-gray-1: #556565;
+$EzyBooking-dark-gray-2: #f2f6f6;
+$EzyBooking-dark-gray-3: #b2baba;
+$EzyBooking-dark-gray-4: #d5d9d9;
+
+$EzyBooking-red: #f40e0e;
+$EzyBooking-red-1: rgba(214, 72, 48, 0.05);
+$EzyBooking-red-2: #d64830;
+$EzyBooking-red-3: #e03426;
+$EzyBooking-red-4: #fee7e7;
+$EzyBooking-red-5: #f40e0e10;
+$EzyBooking-red-6: #ff6f6f;
+
+$EzyBooking-alert-yellow: #eebd0e;
+
+$EzyBooking-disable: #d5d5d9;
+
+$EzyBooking-black: #414042;
+$EzyBooking-black-2: #0f172a;
+
+$EzyBooking-white-1: #fcf8f9;
+
+$EzyBooking-pink-1: '#a3a4cf';
+
+$EzyBooking: (
+  green: #189068,
+  green-1: #1a8242,
+  green-2: #10b981,
+  green-3: #76b146,
+  green-4: #453154,
+  green-5: #005431,
+  green-6: #2ec291,
+
+  dark-green: #146c4f,
+  dark-green-1: #0f523c,
+
+  bright-green: #90be20,
+
+  light-green: #9ad2c0,
+  light-green-1: rgba(26, 130, 66, 0.05),
+  light-green-2: #e8f4f0,
+  light-green-3: #f6f7f7,
+  light-green-4: #f3f9f7,
+
+  blue-gray: #64748b,
+  blue-1: '#007C92',
+  light-blue: #e9f1f3,
+  light-blue-1: #e0f6fc,
+  sky-blue: #00a3c5,
+  sky-blue10: #00a3c510,
+  sky-blue-hover: #00cdf7,
+
+  light-gray: #dde0e0,
+  light-gray-1: #eef0f0,
+  light-gray-2: #999999,
+  light-gray-3: #94a3b8,
+  light-gray-4: #a09e9e,
+  light-gray-5: #ededed,
+
+  gray: #808b8b,
+  gray-1: #d9d9d9,
+  gray-2: #333737,
+
+  dark-gray: #6f7c7c,
+  dark-gray-1: #556565,
+  dark-gray-2: #f2f6f6,
+  dark-gray-3: #b2baba,
+  dark-gray-4: #d5d9d9,
+
+  red: #f40e0e,
+  red-1: rgba(214, 72, 48, 0.05),
+  red-2: #d64830,
+  red-3: #e03426,
+  red-4: #fee7e7,
+  red-5: #f40e0e10,
+  red-6: #ff6f6f,
+  alert-yellow: #eebd0e,
+
+  disable: #d5d5d9,
+
+  black: #414042,
+  black-2: #0f172a,
+
+  white-1: #fcf8f9,
+
+  pink-1: #a3a4cf,
+);
+
+@each $prop, $abbrev in (background-color: bg, color: text) {
+  @each $key, $val in $EzyBooking {
+    .#{$abbrev}-EzyBooking-#{'' + $key} {
+      #{$prop}: $val;
+    }
+  }
+}

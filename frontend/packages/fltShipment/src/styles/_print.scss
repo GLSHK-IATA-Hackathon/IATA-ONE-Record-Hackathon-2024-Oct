@@ -1,0 +1,21 @@
+@media print {
+  @page {
+    size: auto;
+    margin: 0 auto;
+  }
+
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+
+  .complete-booking__wrapper {
+    transform-origin: left;
+    transform: scale(0.9);
+  }
+
+  .break-inside-avoid {
+    page-break-inside: avoid;
+  }
+}

@@ -1,15 +1,13 @@
 <script setup>
 import { ref } from "vue";
 
-import { getLanguageFromUrl } from "../../../../libs/utils/router";
 
 const email = ref("");
 const password = ref("");
 const apiUrl = import.meta.env.VITE_LOGIN_API_BASE_URL;
 
 function login() {
-  const lang = getLanguageFromUrl();
-  location.href = `/${lang}/counter`;
+  location.href = `/fltShipment`;
 }
 </script>
 
@@ -18,7 +16,7 @@ function login() {
     <div class="column">
       <div class="row"></div>
       <div class="row">
-        <h6 class="text-h6 q-ma-none">api url: {{ apiUrl }}</h6>
+        <h6 class="text-h6 q-ma-none"></h6>
       </div>
       <div class="row">
         <q-card square bordered class="q-pa-lg shadow-1">

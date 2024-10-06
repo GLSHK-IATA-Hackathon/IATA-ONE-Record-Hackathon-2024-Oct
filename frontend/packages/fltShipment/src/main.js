@@ -3,11 +3,13 @@ import { Quasar } from "quasar";
 import { createLifecyle, getMicroApp } from "vite-plugin-legacy-qiankun";
 import "@quasar/extras/material-icons/material-icons.css";
 import "quasar/src/css/index.sass";
+import 'virtual:uno.css'
 
 import { name as packageName } from "../package.json";
 import App from "./App.vue";
 import router from "./router";
 import { i18n } from "./locales";
+import './styles/base.scss'
 
 const app = createApp(App);
 

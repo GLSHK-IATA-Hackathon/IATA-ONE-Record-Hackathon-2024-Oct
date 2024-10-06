@@ -2,7 +2,7 @@
 
 <template>
   <div class="footer">
-    <span> Ezy Cargo - {{ $t("footer") }} </span>
+    <span> 2024 GLS HK. All rights reserved.</span>
   </div>
 </template>
 
@@ -13,7 +13,7 @@
   width: auto;
   display: flex;
   align-items: center;
-  border-top: 2px solid black;
+  border-top: 1px solid black;
   gap: 32px;
 
   &__menu {

@@ -26,17 +26,6 @@
       </q-card-section>
     </q-card>
 
-  
-
-    <q-table
-      flat bordered
-      title="Latest Shipment"
-      dense
-      :rows="rows"
-      :columns="columns"
-      row-key="name"
-    />
-
     
   </div>
 </template>

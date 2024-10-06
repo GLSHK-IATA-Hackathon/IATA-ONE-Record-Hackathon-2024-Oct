@@ -59,7 +59,8 @@ registerMicroApps([
     entry: import.meta.env.VITE_ADMINSETTING_URL,
     container: "#main",
     activeRule: (location) => {
-      return location.pathname.includes("/admin");
+      console.log(location);
+      return location.pathname.includes("/adminSetting");
     },
   },
   {
@@ -102,9 +103,10 @@ start({
   sandbox: { experimentalStyleIsolation: true },
 });
 
-setDefaultMountApp("/en-us/login");
+setDefaultMountApp("/login");
 
 function checkHeaderAndFooterNeedToDisplay() {
+  console.log("PATH" + location.pathname);
   const lastPathName = location.pathname
     .split("/")
     .filter((path) => !!path)

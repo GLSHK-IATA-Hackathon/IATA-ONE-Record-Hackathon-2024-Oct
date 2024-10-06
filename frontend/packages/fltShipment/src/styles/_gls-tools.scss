@@ -1,0 +1,120 @@
+.arrow-container {
+  position: relative;
+  height: 100%;
+
+  .arrow {
+    margin-top: 4px;
+    position: relative;
+    width: 100%;
+    height: 1px;
+    background-image: linear-gradient(
+      to right,
+      $EzyBooking-gray 0%,
+      $EzyBooking-gray 50%,
+      transparent 50%
+    );
+    background-size: 8px 1px;
+    background-repeat: repeat-x;
+
+    &::after {
+      z-index: 10;
+      position: absolute;
+      top: 0.5px;
+      right: -3px;
+      content: '';
+      display: inline-block;
+      width: 0px;
+      height: 0px;
+      border-top: 3px solid transparent;
+      border-left: 5px solid $EzyBooking-gray;
+      border-bottom: 3px solid transparent;
+      transform: translate(-50%, -50%);
+      vertical-align: middle;
+    }
+  }
+
+  .thumb {
+    position: absolute;
+    top: 4.5px;
+    width: 5px;
+    height: 5px;
+    border-radius: 2.5px;
+    border: 1px solid $EzyBooking-black;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.gls-scrollbarY {
+  padding-left: 6px;
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 2px;
+    background-color: #d9d9d9;
+  }
+}
+
+.gls-bright-green-spot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: $EzyBooking-bright-green;
+}
+
+.gls-tooltip {
+  &__container {
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.05);
+    border: 1px solid $EzyBooking-light-gray-1;
+    // max-width: 250px;
+    background-color: white;
+    padding: 16px 24px;
+  }
+
+  &__container-1 {
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.05);
+    border: 1px solid $EzyBooking-light-gray-1;
+    background-color: #556565bf;
+    padding: 8px 16px;
+  }
+
+  &__content {
+    font-size: 12px;
+    line-height: 15px;
+    color: $EzyBooking-gray;
+  }
+}
+
+.unit-selector {
+  :deep() {
+    .q-field__append {
+      padding-left: 0px;
+    }
+
+    .q-field,
+    .q-field__native,
+    .q-field__control,
+    .q-field__control-container {
+      padding: 0;
+      min-height: 24px;
+      height: 24px;
+    }
+    .q-select__dropdown-icon {
+      color: $EzyBooking-light-gray-4;
+    }
+
+    .q-field__marginal {
+      height: min-content;
+    }
+  }
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.25s ease-out;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}

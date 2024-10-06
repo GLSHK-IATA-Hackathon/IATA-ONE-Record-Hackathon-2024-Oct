@@ -12,23 +12,30 @@ Key Problems to Address:
 
 ## Solution and what it does 
 
-1. Development of a Comprehensive Communication System Includes a mobile app and website tailored for Ground Handling Agents (GHAs) and airlines to enhance communication, streamline resource reallocation, and proactively manage potential delays. 
+**Development of a Comprehensive Communication System**
 
-2. Centralized Shipment Information Retrieves flight info from a centralized repository (1R). Incorporates the Cargo IQ concept to compare planned and actual event times. 
+- Includes a mobile app and website tailored for Ground Handling Agents (GHAs) and airlines to enhance communication, streamline resource reallocation, and proactively manage potential delays. 
 
-3. Real-Time Updates Frontline staff can use the EzyHandle mobile app to update shipment milestones in real-time. 
+**Centralized Shipment Information**
 
-4. Flight Movement Tracking Integrates flight movement data from airlines and GHA to identify delays promptly. 
+- Retrieves shipment information from centralized repository (1R), and incorporates the Cargo IQ concept to compare planned and actual milestone event times. 
 
-5. Management of Delayed Milestones and Proactive Handling Suggestions  Highlights delayed milestones and recommends workaround 
+**Real-Time Updates**
+
+- Frontline ground staff can use the EzyHandle mobile app to update shipment milestones in real time. 
+
+**Flight Movement Tracking** 
+
+- Integrates flight movement data from airlines and GHA to identify delays promptly. 
+
+**Management of Delayed Milestones and Proactive Handling Suggestions**
+
+- Highlights delayed milestones and recommends workaround 
 
 ## How did we build it? 
 
-EzyHandle will retrieve shipment flight information from a centralized repository (1R) and incorporate the Cargo IQ concept, which compares planned event times with actual event times. Frontline operations staff can use the EzyHandle mobile app to update shipment milestones in real time.  
-
-EzyHandle will also receive flight movement data from airlines to identify delays. By highlighting delayed milestones and recommending handling procedures specific to each airline, the system can significantly improve operational efficiency. 
-
-Besides NE:One Server and NE:One Play, we utilized Vue.js and .NET Core to develop our solution, update shipment milestones and notify users.
+Our concept was first validated using Postman integrating with 1R server. An API service was then developed acting as the middleware between the frontend and 1R server. The frontend sends request data based on the business model.
+NX Monorepos and a microfrontend framework were implemented, allowing developers to maintain modular and manage code more easily. Besides NE:One Server and NE:One Play, we also utilized Vue.js and .NET Core to develop our solution, update shipment milestones and notify users.
 
 ## Challenges we ran into
 
@@ -52,20 +59,20 @@ Active notification for flight discrepancy.
 
 - Multi-functional platform 
 
-- Proactive notification to GHA 
+- Proactive solution approach for flight irregularity 
 
 - Our customer-centric mindset 
 
 ## What is next step for EzyHandle?
 
-1. Automated Rebooking Feature 
+**Automated Rebooking Feature**
 
 - By analyzing current flight schedules, standard handling procedure and available flight alternatives, EzyHandle can provide automated rebooking function to minimize disruptions. 
 
-2. Issue Tracking 
+**Issue Tracking**
 
 - A centralized platform for airlines and GHA to report and trace cargo irregularities.  
 
-3. Integration with existing system 
+**Integration with existing system**
 
 - To facilitate adoption of the solution by integrating with Airline and GHA’s existing system. 

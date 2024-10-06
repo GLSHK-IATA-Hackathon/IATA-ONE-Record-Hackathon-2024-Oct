@@ -106,10 +106,6 @@ const depRows = [
     type: 'ARR',
     ori: 'HKG',
     des: 'LHR',
-    
-    
-    
-
     std: '23:00',
     sta: '07:00',
     etd: '22:50',
@@ -123,10 +119,6 @@ const depRows = [
     type: 'ARR',
     ori: 'HKG',
     des: 'LHR',
-    
-    
-    
-
     std: '23:00',
     sta: '07:00',
     etd: '22:50',
@@ -140,10 +132,6 @@ const depRows = [
     type: 'ARR',
     ori: 'HKG',
     des: 'LHR',
-    
-    
-    
-
     std: '23:00',
     sta: '07:00',
     etd: '22:50',
@@ -157,10 +145,6 @@ const depRows = [
     type: 'ARR',
     ori: 'HKG',
     des: 'LHR',
-    
-    
-    
-
     std: '23:00',
     sta: '07:00',
     etd: '22:50',
@@ -174,10 +158,6 @@ const depRows = [
     type: 'ARR',
     ori: 'HKG',
     des: 'LHR',
-    
-    
-    
-
     std: '23:00',
     sta: '07:00',
     etd: '22:50',
@@ -191,10 +171,6 @@ const depRows = [
     type: 'ARR',
     ori: 'HKG',
     des: 'LHR',
-    
-    
-    
-
     std: '23:00',
     sta: '07:00',
     etd: '22:50',
@@ -227,14 +203,18 @@ const arrColumns = [
 ]
 
 const arrRows = [
-  {
+{
     flightNo: 'CX501',
     type: 'ARR',
     ori: 'HKG',
     des: 'LHR',
-    
-    
-    
+    std: '23:00',
+    sta: '07:00',
+    etd: '22:50',
+    eta: '06:35',
+    atd: '22:50',
+    ata: '06:35',
+
     status: 'Normal'
   },
   {
@@ -242,19 +222,25 @@ const arrRows = [
     type: 'ARR',
     ori: 'HKG',
     des: 'LHR',
-    
-    
-    
-    status: 'Delay'
+    std: '23:00',
+    sta: '07:00',
+    etd: '22:50',
+    eta: '06:35',
+    atd: '22:50',
+    ata: '06:35',
+    status: 'Delayed'
   },
   {
     flightNo: 'CX501',
     type: 'ARR',
     ori: 'HKG',
     des: 'LHR',
-    
-    
-    
+    std: '23:00',
+    sta: '07:00',
+    etd: '22:50',
+    eta: '06:35',
+    atd: '22:50',
+    ata: '06:35',
     status: 'Awareness'
   },
   {
@@ -265,38 +251,14 @@ const arrRows = [
     
     
     
-    status: 'Awareness'
-  },
-  {
-    flightNo: 'CX501',
-    type: 'ARR',
-    ori: 'HKG',
-    des: 'LHR',
-    
-    
-    
-    status: 'Processing'
-  },
-  {
-    flightNo: 'CX501',
-    type: 'ARR',
-    ori: 'HKG',
-    des: 'LHR',
-    
-    
-    
-    status: 'Processing'
-  },
-  {
-    flightNo: 'CX501',
-    type: 'ARR',
-    ori: 'HKG',
-    des: 'LHR',
-    
-    
-    
-    status: 'Completed'
 
+    std: '23:00',
+    sta: '07:00',
+    etd: '22:50',
+    eta: '06:35',
+    atd: '22:50',
+    ata: '06:35',
+    status: 'Awareness'
   },
   {
     flightNo: 'CX501',
@@ -306,7 +268,91 @@ const arrRows = [
     
     
     
-    status: 'Delay'
+    std: '23:00',
+    sta: '07:00',
+    etd: '22:50',
+    eta: '06:35',
+    atd: '22:50',
+    ata: '06:35',
+    status: 'Normal'
+  },
+  {
+    flightNo: 'CX501',
+    type: 'ARR',
+    ori: 'HKG',
+    des: 'LHR',
+    std: '23:00',
+    sta: '07:00',
+    etd: '22:50',
+    eta: '06:35',
+    atd: '22:50',
+    ata: '06:35',
+    status: 'Normal'
+  },
+  {
+    flightNo: 'CX501',
+    type: 'ARR',
+    ori: 'HKG',
+    des: 'LHR',
+    std: '23:00',
+    sta: '07:00',
+    etd: '22:50',
+    eta: '06:35',
+    atd: '22:50',
+    ata: '06:35',
+    status: 'Delayed'
+  },
+  {
+    flightNo: 'CX501',
+    type: 'ARR',
+    ori: 'HKG',
+    des: 'LHR',
+    std: '23:00',
+    sta: '07:00',
+    etd: '22:50',
+    eta: '06:35',
+    atd: '22:50',
+    ata: '06:35',
+    status: 'Delayed'
+  },
+  {
+    flightNo: 'CX501',
+    type: 'ARR',
+    ori: 'HKG',
+    des: 'LHR',
+    std: '23:00',
+    sta: '07:00',
+    etd: '22:50',
+    eta: '06:35',
+    atd: '22:50',
+    ata: '06:35',
+    status: 'Normal'
+  },
+  {
+    flightNo: 'CX501',
+    type: 'ARR',
+    ori: 'HKG',
+    des: 'LHR',
+    std: '23:00',
+    sta: '07:00',
+    etd: '22:50',
+    eta: '06:35',
+    atd: '22:50',
+    ata: '06:35',
+    status: 'Normal'
+  },
+  {
+    flightNo: 'CX501',
+    type: 'ARR',
+    ori: 'HKG',
+    des: 'LHR',
+    std: '23:00',
+    sta: '07:00',
+    etd: '22:50',
+    eta: '06:35',
+    atd: '22:50',
+    ata: '06:35',
+    status: 'Normal'
   }
 ]
 
@@ -334,11 +380,11 @@ const goToArrivalPage = (evt, row) => {
 function badgeColor (value) {
   switch (value) {
     case "Normal":
-      return 'red'
+      return 'gary'
     case 'Delayed':
       return 'red'
     case 'Awareness':
-      return 'awareness'
+      return 'orange'
     case 'Completed':
       return 'completed'
     default:
@@ -349,13 +395,13 @@ function badgeColor (value) {
 function badgeTextColor (value) {
   switch (value) {
     case 'Normal':
-      return 'red'
+      return 'white'
     case 'Delayed':
-      return 'red'
+      return 'white'
     case 'Awareness':
-      return 'awareness'
+      return 'white'
     case 'Completed':
-      return 'completed'
+      return 'white'
     default:
       return 'black'
   }
@@ -452,12 +498,35 @@ function badgeTextColor (value) {
             row-key="name"
             :rows-per-page-options="[0]"
           >
+            <<template v-slot:body-cell-flightNo="props">
+              <q-td :props="props">
+                {{ props.row.flightNo }}
+              </q-td>
+            </template>
+
+            <template v-slot:body-cell-stdOrSta="props">      
+              <q-td :props="props">
+                {{ props.row.std }} / {{ props.row.sta }} 
+              </q-td>
+            </template>
+
+            <template v-slot:body-cell-etdOrEta="props">      
+              <q-td :props="props">
+                {{ props.row.etd }} / {{ props.row.eta }} 
+              </q-td>
+            </template>
+
+            <template v-slot:body-cell-atdOrAta="props">      
+              <q-td :props="props">
+                {{ props.row.atd }} / {{ props.row.ata }} 
+              </q-td>
+            </template>
+
             <template v-slot:body-cell-status="props">
               <q-td :props="props">
                 <q-badge 
                   class="my-badge" 
-                  :rounded="true" 
-                  
+                  :rounded="true"                   
                   :color="badgeColor(props.row.status)" 
                   :text-color="badgeTextColor(props.row.status)" 
                   :label="props.row.status" />
